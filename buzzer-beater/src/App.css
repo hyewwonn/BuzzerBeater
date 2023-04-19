@@ -47,7 +47,7 @@
   height: auto;
   position: absolute;
   top: 0;
-  opacity: 0.8;
+  opacity: 0.9;
   transform: translate(-50%, -150%);
   animation: cloudMoving 25s linear infinite;
 }
