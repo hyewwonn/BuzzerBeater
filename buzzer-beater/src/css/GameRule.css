@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: "esamanru";
-    src: url("./fonts/esamanru\ Medium.ttf");
+    src: url("../fonts/esamanru\ Medium.ttf");
   }
 .box{
     /* width: 857px;
@@ -23,27 +23,4 @@
     margin-top: 150px;
     font-family: 'GongGothicMedium';
     background-color: #FF8A00;
-}
-.btn1 .pc{
-    width: 406px;
-    height: 85px;
-    border-radius: 25px;
-    margin-top: 200px;
-    background-color: #90DDFF;
-    /* opacity: 0.6; */
-    border: solid #00A7F1 7.5px;
-    font-family: 'GongGothicMedium';
-    font-size: 40px;
-    cursor: pointer;
-}
-.btn2 .mobile{
-    width: 406px;
-    height: 85px;
-    border-radius: 25px;
-    margin-top: 50px;
-    background-color: #90DDFF;
-    border: solid #00A7F1 7.5px;
-    font-family: 'GongGothicMedium';
-    font-size: 40px;
-    cursor: pointer;
 }
