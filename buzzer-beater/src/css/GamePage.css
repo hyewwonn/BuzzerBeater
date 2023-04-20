@@ -1,4 +1,75 @@
 @font-face {
-    font-family: "esamanru";
-    src: url("../fonts/esamanru\ Medium.ttf");
-  }
+  font-family: "esamanru";
+  src: url("../fonts/esamanru\ Medium.ttf");
+}
+
+* {
+  
+}
+
+.balls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.blueball {
+  width: 200px;
+  top: 100px;
+}
+.orangeball {
+  width: 200px;
+  top: 200px;
+}
+.pinkball {
+  width: 200px;
+  top: 300px;
+}
+.greenball {
+  width: 200px;
+  top: 400px;
+}
+
+.goal-posts {
+
+}
+.blue-goalpost {
+
+}
+.orange-goalpost {
+  
+}
+.pink-goalpost {
+  
+}
+.green-goalpost {
+  
+}
+
+.buttons {
+
+}
+.up-btn {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+  border-radius: 100%;
+}
+.down-btn {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+  border-radius: 100%;
+}
+.left-btn {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  border-radius: 100%;
+}
+.right-btn {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  border-radius: 100%;
+}
