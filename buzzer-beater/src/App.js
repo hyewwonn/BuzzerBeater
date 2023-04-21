@@ -1,34 +1,47 @@
-import React from "react";
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import GameRule from './pages/GameRule';
+import GamePage from './pages/GamePage';
+import logo from './img/logo.png';
+import goalpost from './img/goalpost.png';
 import bb from './img/blueball.png';
 import pb from './img/pinkball.png';
 import ob from './img/orangeball.png';
 import gb from './img/greenball.png';
-import bgp from './img/bluegoalpost.png';
-import pgp from './img/pinkgoalpost.png';
-import ogp from './img/orangegoalpost.png';
-import ggp from './img/greengoalpost.png';
+import c1 from './img/cloud1.png';
+import c2 from './img/cloud2.png';
 
-export default function GamePage() {
-  const leftsyle = { float: 'left' };
+function App() {
   return (
-    <div className="box">
-      <div className="nav">
-        <div style={leftsyle} className="score">000</div>
-        <div style={leftsyle} className="time-clock">TIME 00</div>
+    <Router>
+      <div className="App">
+        <div className="container">
+          <div className="bg-container">
+            <img className="cloud c1" src={c1} alt="cloud" />
+            <img className="cloud c2" src={c2} alt="cloud" />
+            <img className="goalpost" src={goalpost} alt="goalpost" />
+            <img className="blueball" src={bb} alt="blueball" />
+            <img className="orangeball" src={ob} alt="orangeball" />
+            <img className="pinkball" src={pb} alt="pinkball" />
+            <img className="greenball" src={gb} alt="greenball" />
+          </div>
+          <div className="logo">
+            <Link to="/" className='main'>
+            <img className="logo-img" src={logo} alt="logo" /></Link>
+          </div>
+          <div className="btn">
+            <Link to="/gamerule" className="how-btn">게임방법</Link>
+            <Link to="/gamepage" className="start-btn">게임시작</Link>
+          </div>
+        </div>
       </div>
-      <div className="balls">
-        <img className="blueball" src={bb} alt="blueball"/>
-        <img className="orangeball" src={ob} alt="orangeball"/>
-        <img className="pinkball" src={pb} alt="pinkball"/>
-        <img className="greenball" src={gb} alt="greenball"/>
-      </div>
-      <div className="goal-posts">
-        <img className="blue-goalpost" src={bgp} alt="blue-goalpost"/>
-        <img className="pink-goalpost" src={pgp} alt="pink-goalpost"/>
-        <img className="green-goalpost" src={ggp} alt="green-goalpost"/>
-        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/gamerule" element={<GameRule/>} />
+        <Route path="/gamepage" element={<GamePage/>} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;

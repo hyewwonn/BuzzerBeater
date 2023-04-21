@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/GamePage.css';
+import '../App.css';
 import bb from '../img/blueball.png';
 import pb from '../img/pinkball.png';
 import ob from '../img/orangeball.png';
@@ -10,10 +10,13 @@ import ogp from '../img/orangegoalpost.png';
 import ggp from '../img/greengoalpost.png';
 
 export default function GamePage() {
+  const leftsyle = { float: 'left' };
   return (
     <div className="box">
-      <div className="score"></div>
-      <div className="time-clock"></div>
+      <div className="nav">
+        <div style={leftsyle} className="score">000</div>
+        <div style={leftsyle} className="time-clock">TIME 00</div>
+      </div>
       <div className="balls">
         <img className="blueball" src={bb} alt="blueball"/>
         <img className="orangeball" src={ob} alt="orangeball"/>
@@ -22,15 +25,9 @@ export default function GamePage() {
       </div>
       <div className="goal-posts">
         <img className="blue-goalpost" src={bgp} alt="blue-goalpost"/>
-        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
         <img className="pink-goalpost" src={pgp} alt="pink-goalpost"/>
         <img className="green-goalpost" src={ggp} alt="green-goalpost"/>
-      </div>
-      <div className="buttons">
-        <button className="up-btn">↑</button>
-        <button className="down-btn">↓</button>
-        <button className="left-btn">←</button>
-        <button className="right-btn">→</button>
+        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
       </div>
     </div>
   );

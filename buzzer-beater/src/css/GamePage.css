@@ -1,75 +1,81 @@
 @font-face {
   font-family: "esamanru";
-  src: url("../fonts/esamanru\ Medium.ttf");
+  src: url("./fonts/esamanru\ Medium.ttf");
 }
 
 * {
-  
+  padding: 0;
+  margin: 0;
+}
+.nav{
+  width: 100%;
+  height: 30vh;
+}
+.nav .score {
+  font-size: 3rem;
+  border: solid green 10px;
+  width: 200px;
+  margin: 20px;
+  text-align: center;
+}
+.nav .time-clock {
+  font-size: 3rem;
+  border: solid black 3px;
+  width: 200px;
+  margin: 20px;
+  text-align: center;
 }
 
 .balls {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
 }
 .blueball {
-  width: 200px;
+  position: absolute;
+  width: 170px;
   top: 100px;
 }
 .orangeball {
-  width: 200px;
-  top: 200px;
+  position: absolute;
+  width: 170px;
+  top: 170px;
 }
 .pinkball {
-  width: 200px;
-  top: 300px;
+  position: absolute;
+  width: 170px;
+  top: 240px;
 }
 .greenball {
-  width: 200px;
-  top: 400px;
+  position: absolute;
+  width: 170px;
+  top: 310px;
 }
 
 .goal-posts {
 
 }
 .blue-goalpost {
-
+  float: right;
+  margin-top: 260px;
+  margin-right: 150px;
+  width: 210px;
 }
 .orange-goalpost {
-  
+  float: right;
+  margin-top: 400px;
+  width: 210px;
 }
 .pink-goalpost {
-  
+  float: left;
+  margin-top: 260px;
+  margin-left: 150px;
+  width: 210px;
 }
 .green-goalpost {
-  
-}
-
-.buttons {
-
-}
-.up-btn {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-  border-radius: 100%;
-}
-.down-btn {
-  width: 200px;
-  height: 200px;
-  background-color: blue;
-  border-radius: 100%;
-}
-.left-btn {
-  width: 200px;
-  height: 200px;
-  background-color: pink;
-  border-radius: 100%;
-}
-.right-btn {
-  width: 200px;
-  height: 200px;
-  background-color: orange;
-  border-radius: 100%;
+  float: left;
+  margin-top: 400px;
+  margin-right: 300px;
+  width: 210px;
 }
