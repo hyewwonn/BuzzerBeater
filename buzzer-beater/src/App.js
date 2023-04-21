@@ -12,12 +12,8 @@ import gb from './img/greenball.png';
 import c1 from './img/cloud1.png';
 import c2 from './img/cloud2.png';
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <div className="container">
-          <div className="bg-container">
+function Main() {
+  return <div className='container'><div className="bg-container">
             <img className="cloud c1" src={c1} alt="cloud" />
             <img className="cloud c2" src={c2} alt="cloud" />
             <img className="goalpost" src={goalpost} alt="goalpost" />
@@ -27,19 +23,24 @@ function App() {
             <img className="greenball" src={gb} alt="greenball" />
           </div>
           <div className="logo">
-            <Link to="/" className='main'>
-            <img className="logo-img" src={logo} alt="logo" /></Link>
+            <img className="logo-img" src={logo} alt="logo" />
           </div>
           <div className="btn">
             <Link to="/gamerule" className="how-btn">게임방법</Link>
             <Link to="/gamepage" className="start-btn">게임시작</Link>
-          </div>
-        </div>
+          </div></div>
+}
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/gamerule" element={<GameRule/>} />
+          <Route path="/gamepage" element={<GamePage/>} />
+        </Routes>
       </div>
-      <Routes>
-        <Route path="/gamerule" element={<GameRule/>} />
-        <Route path="/gamepage" element={<GamePage/>} />
-      </Routes>
+      
     </Router>
   );
 }
