@@ -5,22 +5,46 @@
 @font-face {
     font-family: "esamanru";
     src: url("../fonts/esamanru\ Medium.ttf");
-  }
+}
 .box{
     /* width: 857px;
     height: 645px; */
     /* font-family: 'GongGothicMedium';
     background-color: #FF8A00; */
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 .content-box{
-    width: 857px;
-    height: 645px;
-    margin-top: 150px;
-    font-family: 'GongGothicMedium';
+    width: 50vw;
+    height: 80vh;
+    margin-top: 5%;
+    font-family: 'esamanru';
     background-color: #FF8A00;
+    box-shadow: 0px 4px 7px 0.5px grey;
+}
+.btn1 .pc{
+    width: 28vw;
+    height: 12vh;
+    border-radius: 25px;
+    margin-top: 18%;
+    background-color: #90DDFF;
+    /* opacity: 0.6; */
+    border: solid #00A7F1 7.5px;
+    font-family: 'esamanru';
+    font-size: 40px;
+    cursor: pointer;
+}
+.btn2 .mobile{
+    width: 28vw;
+    height: 12vh;
+    border-radius: 25px;
+    margin-top: 12%;
+    background-color: #90DDFF;
+    border: solid #00A7F1 7.5px;
+    font-family: 'esamanru';
+    font-size: 40px;
+    cursor: pointer;
 }
