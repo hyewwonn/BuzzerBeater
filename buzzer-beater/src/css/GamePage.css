@@ -1,4 +1,87 @@
 @font-face {
-    font-family: "esamanru";
-    src: url("../fonts/esamanru\ Medium.ttf");
-  }
+  font-family: "esamanru";
+  src: url("../fonts/esamanru\ Medium.ttf");
+}
+
+/* 점수판 글자들 각각 띄우기 
+   위에 점수판, 시간제한 정렬하기
+   배경 넣기
+   농구공 이미지 통일하기 
+   스크롤 안 뜨게 하기 */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+.nav{
+  width: 100%;
+  height: 30vh;
+}
+.nav .score {
+  font-size: 3rem;
+  border: solid green 10px;
+  width: 200px;
+  margin: 20px;
+  text-align: center;
+}
+.nav .time-clock {
+  font-size: 3rem;
+  border: solid black 3px;
+  width: 200px;
+  margin: 20px;
+  text-align: center;
+}
+
+.balls {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blueBall {
+  position: absolute;
+  width: 170px;
+  top: 100px;
+}
+.orangeBall {
+  position: absolute;
+  width: 170px;
+  top: 170px;
+}
+.pinkBall {
+  position: absolute;
+  width: 170px;
+  top: 240px;
+}
+.greenBall {
+  position: absolute;
+  width: 170px;
+  top: 310px;
+}
+
+.goal-posts {
+
+}
+.blue-goalpost {
+  float: right;
+  margin-top: 260px;
+  margin-right: 150px;
+  width: 210px;
+}
+.orange-goalpost {
+  float: right;
+  margin-top: 400px;
+  width: 210px;
+}
+.pink-goalpost {
+  float: left;
+  margin-top: 260px;
+  margin-left: 150px;
+  width: 210px;
+}
+.green-goalpost {
+  float: left;
+  margin-top: 400px;
+  margin-right: 300px;
+  width: 210px;
+}
