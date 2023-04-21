@@ -22,15 +22,9 @@ export default function GamePage() {
       </div>
       <div className="goal-posts">
         <img className="blue-goalpost" src={bgp} alt="blue-goalpost"/>
-        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
         <img className="pink-goalpost" src={pgp} alt="pink-goalpost"/>
         <img className="green-goalpost" src={ggp} alt="green-goalpost"/>
-      </div>
-      <div className="buttons">
-        <button className="up-btn">↑</button>
-        <button className="down-btn">↓</button>
-        <button className="left-btn">←</button>
-        <button className="right-btn">→</button>
+        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
       </div>
     </div>
   );
