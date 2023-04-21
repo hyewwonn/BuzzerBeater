@@ -1,14 +1,23 @@
-import React from "react";
+import React from 'react';
+// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import '../css/GameRule.css';
 
-export default function GameRule() {
+function GameRule() {
+  const handlePcButtonClick = () => {
+    window.location.href = '../pages/PCrule.js';
+  };
+
+  const handleMobileButtonClick = () => {
+    window.location.href = 'mobile.html';
+  };
+
   return (
     <div className="box">
       <div className="content-box">
-        게임방법
+        
       </div>
     </div>
   );
 }
 
-
+export default GameRule;
