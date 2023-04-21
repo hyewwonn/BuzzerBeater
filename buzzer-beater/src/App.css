@@ -1,11 +1,24 @@
-/* @font-face {
+@font-face {
   font-family: "esamanru";
-  src: url("../fonts/esamanru\ Medium.ttf");
-} */
+  src: url("./fonts/esamanru\ Medium.ttf");
+}
 
 * {
   padding: 0;
   margin: 0;
+}
+
+.score {
+  font-size: 3rem;
+  border: solid green 10px;
+  width: 200px;
+  margin: 20px;
+}
+.time-clock {
+  font-size: 3rem;
+  border: solid black 3px;
+  width: 200px;
+  margin: 20px;
 }
 
 .balls {

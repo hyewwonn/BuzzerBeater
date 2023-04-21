@@ -12,8 +12,8 @@ import ggp from './img/greengoalpost.png';
 export default function GamePage() {
   return (
     <div className="box">
-      <div className="score"></div>
-      <div className="time-clock"></div>
+      <div className="score">000</div>
+      <div className="time-clock">TIME 00</div>
       <div className="balls">
         <img className="blueball" src={bb} alt="blueball"/>
         <img className="orangeball" src={ob} alt="orangeball"/>
