@@ -12,15 +12,10 @@ function GameRule() {
   };
 
   return (
-      <div className="box">
-        <div className="content-box">
-          <div className="btn1">
-            <button type="button" className="pc" onClick={handlePcButtonClick}>PC</button>
-          </div>
-          <div className="btn2">
-            <button type="button" className="mobile" onClick={handleMobileButtonClick}>MOBILE</button>
-          </div>
-        </div>
+    <div className="box">
+      <div className="content-box">
+        
+      </div>
     </div>
   );
 }
