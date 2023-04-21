@@ -16,23 +16,23 @@
 }
 .blueball {
   position: absolute;
-  width: 200px;
-  top: 50px;
+  width: 170px;
+  top: 100px;
 }
 .orangeball {
   position: absolute;
-  width: 200px;
-  top: 120px;
+  width: 170px;
+  top: 170px;
 }
 .pinkball {
   position: absolute;
-  width: 200px;
-  top: 190px;
+  width: 170px;
+  top: 240px;
 }
 .greenball {
   position: absolute;
-  width: 200px;
-  top: 260px;
+  width: 170px;
+  top: 310px;
 }
 
 .goal-posts {
@@ -40,13 +40,24 @@
 }
 .blue-goalpost {
   float: right;
+  margin-top: 260px;
+  margin-right: 150px;
+  width: 210px;
 }
 .orange-goalpost {
   float: right;
+  margin-top: 400px;
+  width: 210px;
 }
 .pink-goalpost {
   float: left;
+  margin-top: 260px;
+  margin-left: 150px;
+  width: 210px;
 }
 .green-goalpost {
   float: left;
+  margin-top: 400px;
+  margin-right: 300px;
+  width: 210px;
 }
