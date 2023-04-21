@@ -1,5 +1,5 @@
 import React from "react";
-import '../App.css';
+import '../css/GamePage.css';
 import bb from '../img/blueball.png';
 import pb from '../img/pinkball.png';
 import ob from '../img/orangeball.png';
@@ -18,10 +18,10 @@ export default function GamePage() {
         <div style={leftsyle} className="time-clock">TIME 00</div>
       </div>
       <div className="balls">
-        <img className="blueball" src={bb} alt="blueball"/>
-        <img className="orangeball" src={ob} alt="orangeball"/>
-        <img className="pinkball" src={pb} alt="pinkball"/>
-        <img className="greenball" src={gb} alt="greenball"/>
+        <img className="blueBall" src={bb} alt="blueball"/>
+        <img className="orangeBall" src={ob} alt="orangeball"/>
+        <img className="pinkBall" src={pb} alt="pinkball"/>
+        <img className="greenBall" src={gb} alt="greenball"/>
       </div>
       <div className="goal-posts">
         <img className="blue-goalpost" src={bgp} alt="blue-goalpost"/>

@@ -1,7 +1,13 @@
 @font-face {
   font-family: "esamanru";
-  src: url("./fonts/esamanru\ Medium.ttf");
+  src: url("../fonts/esamanru\ Medium.ttf");
 }
+
+/* 점수판 글자들 각각 띄우기 
+   위에 점수판, 시간제한 정렬하기
+   배경 넣기
+   농구공 이미지 통일하기 
+   스크롤 안 뜨게 하기 */
 
 * {
   padding: 0;
@@ -32,22 +38,22 @@
   justify-content: center;
   align-items: center;
 }
-.blueball {
+.blueBall {
   position: absolute;
   width: 170px;
   top: 100px;
 }
-.orangeball {
+.orangeBall {
   position: absolute;
   width: 170px;
   top: 170px;
 }
-.pinkball {
+.pinkBall {
   position: absolute;
   width: 170px;
   top: 240px;
 }
-.greenball {
+.greenBall {
   position: absolute;
   width: 170px;
   top: 310px;
