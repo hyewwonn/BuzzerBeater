@@ -10,12 +10,14 @@ import ogp from '../img/orangegoalpost.png';
 import ggp from '../img/greengoalpost.png';
 
 export default function GamePage() {
-  const leftsyle = { float: 'left' };
+  const leftstyle = { float: 'left' };
+  const rightstyle = { float: 'right' };
+
   return (
     <div className="box">
-      <div className="nav">
-        <div style={leftsyle} className="score">000</div>
-        <div style={leftsyle} className="time-clock">TIME 00</div>
+      <div className="top">
+        <div style={leftstyle} className="score">000</div>
+        <div style={rightstyle} className="time-clock">TIME 00</div>
       </div>
       <div className="balls">
         <img className="blueBall" src={bb} alt="blueball"/>

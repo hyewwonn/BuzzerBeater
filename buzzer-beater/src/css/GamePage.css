@@ -13,18 +13,27 @@
   padding: 0;
   margin: 0;
 }
-.nav{
+
+.box {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.top {
   width: 100%;
   height: 30vh;
 }
-.nav .score {
+.top .score {
   font-size: 3rem;
   border: solid green 10px;
   width: 200px;
   margin: 20px;
   text-align: center;
 }
-.nav .time-clock {
+.top .time-clock {
   font-size: 3rem;
   border: solid black 3px;
   width: 200px;
