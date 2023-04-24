@@ -1,9 +1,9 @@
 import React from "react";
 import '../css/GamePage.css';
 import bb from '../img/blueball.png';
-import pb from '../img/pinkball.png';
+import pb from '../img/pinkball2.png';
 import ob from '../img/orangeball.png';
-import gb from '../img/greenball.png';
+import gb from '../img/greenball2.png';
 import bgp from '../img/bluegoalpost.png';
 import pgp from '../img/pinkgoalpost.png';
 import ogp from '../img/orangegoalpost.png';
