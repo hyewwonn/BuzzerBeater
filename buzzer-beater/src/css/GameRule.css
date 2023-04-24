@@ -25,7 +25,7 @@
     background-color: #FF8A00;
     box-shadow: 0px 4px 7px 0.5px grey;
 }
-.btn1 .pc{
+.pc{
     width: 28vw;
     height: 12vh;
     border-radius: 25px;
@@ -37,7 +37,7 @@
     font-size: 40px;
     cursor: pointer;
 }
-.btn2 .mobile{
+.mobile{
     width: 28vw;
     height: 12vh;
     border-radius: 25px;
