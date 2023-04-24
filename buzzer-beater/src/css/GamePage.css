@@ -28,6 +28,7 @@
 }
 .top .score {
   font-size: 3rem;
+  font-family: 'esamanru';
   border: solid green 10px;
   width: 200px;
   margin: 20px;
@@ -35,6 +36,7 @@
 }
 .top .time-clock {
   font-size: 3rem;
+  font-family: 'esamanru';
   border: solid black 3px;
   width: 200px;
   margin: 20px;
