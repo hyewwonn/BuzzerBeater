@@ -43,8 +43,8 @@ function PCrule () {
                     </div>
                 </div>
                 <div className="button">
-                    <button className="btn1">처음으로</button>
-                    <button className="btn2">게임시작</button>
+                    <button className="btn-first">처음으로</button>
+                    <button className="btn-start">게임시작</button>
                 </div>
             </div>
         </div>
