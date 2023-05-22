@@ -24,7 +24,7 @@
 
 .top {
   width: 100%;
-  height: 30vh;
+  height: 20vh;
 }
 .top .score {
   font-size: 3rem;
@@ -54,22 +54,22 @@
 .blueBall {
   position: absolute;
   width: 170px;
-  top: 100px;
+  top: 70px;
 }
 .orangeBall {
   position: absolute;
   width: 170px;
-  top: 170px;
+  top: 140px;
 }
 .pinkBall {
   position: absolute;
   width: 170px;
-  top: 240px;
+  top: 210px;
 }
 .greenBall {
   position: absolute;
   width: 170px;
-  top: 310px;
+  top: 280px;
 }
 
 .goal-posts {
@@ -147,6 +147,26 @@
 }
 
 @media all and (min-width: 768px) and (max-width: 1023px)  {
+  .top {
+    width: 100%;
+    height: 30vh;
+  }
+  .top .score {
+    font-size: 3rem;
+    font-family: 'esamanru';
+    border: solid green 10px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+  .top .time-clock {
+    font-size: 3rem;
+    font-family: 'esamanru';
+    padding: 5px;
+    border: solid black 3px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .blueBall {
     position: absolute;
     width: 160px;
@@ -175,17 +195,17 @@
   }
   .orange-goalpost {
     float: right;
-    margin-top: 400px;
+    margin: 50px 50px 0 0;
     width: 210px;
   }
   .pink-goalpost {
     float: left;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 90px;
     width: 210px;
   }
   .green-goalpost {
     float: left;
-    margin: 200px 0 0 0;
+    margin: 260px 50px 0 0;
     width: 210px;
   }
 }
