@@ -33,6 +33,7 @@
   width: 200px;
   margin: 20px;
   text-align: center;
+  letter-spacing: 5px;
 }
 .top .time-clock {
   font-size: 3rem;
@@ -41,6 +42,7 @@
   width: 200px;
   margin: 20px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .balls {
@@ -95,4 +97,99 @@
   margin-top: 400px;
   margin-right: 300px;
   width: 210px;
+}
+
+@media all and (max-width: 1024px)  {
+  .blueBall {
+    position: absolute;
+    width: 170px;
+    top: 100px;
+  }
+  .orangeBall {
+    position: absolute;
+    width: 170px;
+    top: 170px;
+  }
+  .pinkBall {
+    position: absolute;
+    width: 170px;
+    top: 240px;
+  }
+  .greenBall {
+    position: absolute;
+    width: 170px;
+    top: 310px;
+  }
+  
+  .blue-goalpost {
+    float: right;
+    margin-top: 260px;
+    margin-right: 150px;
+    width: 210px;
+  }
+  .orange-goalpost {
+    float: right;
+    margin-top: 400px;
+    width: 210px;
+  }
+  .pink-goalpost {
+    float: left;
+    margin-top: 260px;
+    margin-left: 150px;
+    width: 210px;
+  }
+  .green-goalpost {
+    float: left;
+    margin-top: 400px;
+    margin-right: 300px;
+    width: 210px;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px)  {
+  .blueBall {
+    position: absolute;
+    width: 160px;
+    top: 60px;
+  }
+  .orangeBall {
+    position: absolute;
+    width: 160px;
+    top: 130px;
+  }
+  .pinkBall {
+    position: absolute;
+    width: 160px;
+    top: 200px;
+  }
+  .greenBall {
+    position: absolute;
+    width: 160px;
+    top: 270px;
+  }
+  
+  .blue-goalpost {
+    float: right;
+    margin: 0 100px 0 0;
+    width: 200px;
+  }
+  .orange-goalpost {
+    float: right;
+    margin-top: 400px;
+    width: 210px;
+  }
+  .pink-goalpost {
+    float: left;
+    margin: 0 0 0 100px;
+    width: 210px;
+  }
+  .green-goalpost {
+    float: left;
+    margin: 200px 0 0 0;
+    width: 210px;
+  }
+}
+
+@media all and (max-width: 767px)  {
+  
 }
