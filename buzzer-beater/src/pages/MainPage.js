@@ -1,21 +1,21 @@
 import React from 'react';
-import './App.css';
+import '../css/MainPage.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import GameRule from './pages/GameRule';
-import GamePage from './pages/GamePage';
-import logo from './img/logo.png';
-import goalpost from './img/goalpost.png';
-import bb from './img/blueball.png';
-import pb from './img/pinkball.png';
-import ob from './img/orangeball.png';
-import gb from './img/greenball.png';
-import c1 from './img/cloud1.png';
-import c2 from './img/cloud2.png';
+import GameRule from '../pages/GameRule';
+import GamePage from '../pages/GamePage';
+import logo from '../img/logo.png';
+import goalpost from '../img/goalpost.png';
+import bb from '../img/blueball.png';
+import pb from '../img/pinkball.png';
+import ob from '../img/orangeball.png';
+import gb from '../img/greenball.png';
+import c1 from '../img/cloud1.png';
+import c2 from '../img/cloud2.png';
 
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="Main-wrapper">
         <div className="container">
           <div className="bg-container">
             <img className="cloud c1" src={c1} alt="cloud" />
