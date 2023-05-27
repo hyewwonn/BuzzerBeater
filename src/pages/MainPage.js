@@ -1,0 +1,37 @@
+import styles from '../styles/MainPage.module.css';
+import Image from 'next/image';
+import logo from '../../public/img/logo.png';
+import goalpost from '../../public/img/goalpost.png';
+import bb from '../../public/img/blueball.png';
+import pb from '../../public/img/pinkball.png';
+import ob from '../../public/img/orangeball.png';
+import gb from '../../public/img/greenball.png';
+import c1 from '../../public/img/cloud1.png';
+import c2 from '../../public/img/cloud2.png';
+
+function App() {
+  return (
+    <div className={styles['Main-wrapper']}>
+      <div className={styles.container}>
+        <div className={styles['bg-container']}>
+          <Image className={`${styles.cloud} ${styles.c1}`} src={c1} alt="cloud" />
+          <Image className={`${styles.cloud} ${styles.c2}`} src={c2} alt="cloud" />
+          <Image className={styles.goalpost} src={goalpost} alt="goalpost" />
+          <Image className={styles.blueball} src={bb} alt="blueball" />
+          <Image className={styles.orangeball} src={ob} alt="orangeball" />
+          <Image className={styles.pinkball} src={pb} alt="pinkball" />
+          <Image className={styles.greenball} src={gb} alt="greenball" />
+        </div>
+        <div className={styles.logo}>
+          <Image className={`${styles['logo-img']}`} src={logo} alt="logo" />
+        </div>
+        <div className={styles.btn}>
+          <button to="/gamerule" className={styles['how-btn']}>게임방법</button>
+          <button to="/gamepage" className={styles['start-btn']}>게임시작</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
