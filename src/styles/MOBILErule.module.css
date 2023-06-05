@@ -87,8 +87,7 @@
     text-align: right;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-right: 40px;
+    margin-left: 40px;
 }
 .main .ment{
     color: white;
@@ -106,17 +105,6 @@
     margin-left: 14%;
 }
 .btn-first{
-    /* width: 45%;
-    height: 94px;
-    background-color: #90DDFF;
-    border: solid #00A7F1 7.5px;
-    border-radius: 25px;
-    margin-right: 20px;
-    font-family: 'esamanru';
-    font-size: 40px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center; */
     font-family: "esamanru";
     font-size: 220%;
     font-style: bold;
@@ -128,16 +116,6 @@
     z-index: 1000;
 }
 .btn-start{
-    /* width: 45%;
-    height: 94px;
-    background-color: #90DDFF;
-    border: solid #00A7F1 7.5px;
-    border-radius: 25px;
-    margin-left: 20px;
-    font-family: 'esamanru';
-    font-size: 40px;
-    cursor: pointer;
-    font-weight: bold; */
     font-family: "esamanru";
     font-size: 220%;
     font-style: bold;
