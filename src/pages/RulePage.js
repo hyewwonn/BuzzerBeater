@@ -78,12 +78,8 @@ function Rule() {
           </div>
         </div>
         <div className={isMobile ? mobileStyles.button : styles.button}>
-          <button className={isMobile ? mobileStyles['btn-first'] : styles['btn-first']}>
-            처음으로
-          </button>
-          <button className={isMobile ? mobileStyles['btn-start'] : styles['btn-start']}>
-            게임시작
-          </button>
+          <a className={styles.a} href="MainPage"><button className={isMobile ? mobileStyles['btn-first'] : styles['btn-first']}>처음으로 </button></a>
+          <a className={styles.a} href="GamePage"><button className={isMobile ? mobileStyles['btn-start'] : styles['btn-start']}>게임시작 </button></a>
         </div>
       </div>
     </div>
