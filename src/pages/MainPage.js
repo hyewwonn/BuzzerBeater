@@ -26,8 +26,8 @@ function App() {
           <Image className={`${styles['logo-img']}`} src={logo} alt="logo" />
         </div>
         <div className={styles.btn}>
-          <button to="/gamerule" className={styles['how-btn']}>게임방법</button>
-          <button to="/gamepage" className={styles['start-btn']}>게임시작</button>
+          <a className={styles.a} href="RulePage"><button className={styles['how-btn']}>게임방법 </button></a>
+          <a className={styles.a} href="GamePage"><button className={styles['start-btn']}>게임시작 </button></a>
         </div>
       </div>
     </div>
