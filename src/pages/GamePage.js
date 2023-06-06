@@ -1,35 +1,35 @@
-import React from "react";
-import '../css/GamePage.css';
-import bb from '../img/blueball.png';
-import pb from '../img/pinkball2.png';
-import ob from '../img/orangeball.png';
-import gb from '../img/greenball2.png';
-import bgp from '../img/bluegoalpost.png';
-import pgp from '../img/pinkgoalpost.png';
-import ogp from '../img/orangegoalpost.png';
-import ggp from '../img/greengoalpost.png';
+import styles from '../styles/GamePage.module.css';
+import Image from 'next/image';
+import bb from '../../public/img/blueball.png';
+import pb from '../../public/img/pinkball.png';
+import ob from '../../public/img/orangeball.png';
+import gb from '../../public/img/greenball.png';
+import bgp from '../../public/img/bluegoalpost.png';
+import pgp from '../../public/img/pinkgoalpost.png';
+import ogp from '../../public/img/orangegoalpost.png';
+import ggp from '../../public/img/greengoalpost.png';
 
 export default function GamePage() {
   const leftstyle = { float: 'left' };
   const rightstyle = { float: 'right' };
 
   return (
-    <div className="box">
-      <div className="top">
-        <div style={leftstyle} className="score">000</div>
-        <div style={rightstyle} className="time-clock">TIME 00</div>
+    <div className={styles.box}>
+      <div className={styles.top}>
+        <div style={leftstyle} className={styles.score}>000</div>
+        <div style={rightstyle} className={styles.time_clock}>TIME 00</div>
       </div>
-      <div className="balls">
-        <img className="blueBall" src={bb} alt="blueball"/>
-        <img className="orangeBall" src={ob} alt="orangeball"/>
-        <img className="pinkBall" src={pb} alt="pinkball"/>
-        <img className="greenBall" src={gb} alt="greenball"/>
+      <div className={styles.balls}>
+        <Image className={styles.blueBall} src={bb} alt="blueball"/>
+        <Image className={styles.orangeBall} src={ob} alt="orangeball"/>
+        <Image className={styles.pinkBall} src={pb} alt="pinkball"/>
+        <Image className={styles.greenBall} src={gb} alt="greenball"/>
       </div>
-      <div className="goal-posts">
-        <img className="blue-goalpost" src={bgp} alt="blue-goalpost"/>
-        <img className="pink-goalpost" src={pgp} alt="pink-goalpost"/>
-        <img className="green-goalpost" src={ggp} alt="green-goalpost"/>
-        <img className="orange-goalpost" src={ogp} alt="orange-goalpost"/>
+      <div className={styles.goal_posts}>
+        <Image className={styles.blue_goalpost} src={bgp} alt="blue-goalpost"/>
+        <Image className={styles.pink_goalpost} src={pgp} alt="pink-goalpost"/>
+        <Image className={styles.green_goalpost} src={ggp} alt="green-goalpost"/>
+        <Image className={styles.orange_goalpost} src={ogp} alt="orange-goalpost"/>
       </div>
     </div>
   );
