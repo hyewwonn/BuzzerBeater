@@ -53,6 +53,7 @@
 .blueBall, .pinkBall,
 .greenBall, .orangeBall {
   width: 10vw;
+  max-width: 140px;
   height: auto;
 }
 
