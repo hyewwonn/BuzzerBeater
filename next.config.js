@@ -1,6 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+  experimental: {
+    appDir: true,
+  },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.(mp3)$/,
+      use: {
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          publicPath: `/_next/static/audio/`,
+          outputPath: `${options.isServer ? "../" : ""}static/audio/`,
+        },
+      },
+    });
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;

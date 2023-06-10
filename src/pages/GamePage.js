@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/GamePage.module.css';
 import Image from 'next/image';
+import Howler from 'react-howler'; // react-howler 라이브러리 임포트
 import bb from '../../public/img/blueball.png';
 import pb from '../../public/img/pinkball2.png';
 import ob from '../../public/img/orangeball.png';
@@ -9,6 +10,7 @@ import bgp from '../../public/img/bluegoalpost.png';
 import pgp from '../../public/img/pinkgoalpost.png';
 import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
+import gameSound from '../../public/audio/gameSound.mp3';
 
 const Ball = ({ image }) => {
   return (
@@ -22,11 +24,12 @@ export default function GamePage() {
   const leftstyle = { float: 'left' };
   const rightstyle = { float: 'right' };
   const ballImages = [bb, pb, ob, gb];
-  const [ballsQueue, setBallsQueue] = useState([]); // 게임 화면에 표시되는 공들의 이미지 경로를 저장하는 배열
-  const [time, setTime] = useState(60); // 게임의 남은 시간
-  const [startCountdown, setStartCountdown] = useState(3); // 게임 시작 전 카운트다운
-  const [showStart, setShowStart] = useState(true); // 게임 시작 전 카운트다운 또는 "START" 표시 여부
-  const intervalRef = useRef(null); // setInterval 반환 값 저장용 Ref
+  const [ballsQueue, setBallsQueue] = useState([]);
+  const [time, setTime] = useState(60);
+  const [startCountdown, setStartCountdown] = useState(3);
+  const [showStart, setShowStart] = useState(true);
+  const [isSoundPlaying, setIsSoundPlaying] = useState(false); // 음악 재생 상태를 저장하는 상태 변수
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     // 게임 시작 전 카운트다운 처리
@@ -64,6 +67,9 @@ export default function GamePage() {
 
       // 60초 카운트다운 시작
       setTime(60);
+
+      // 음악 재생 시작
+      setIsSoundPlaying(true);
     }
 
     return () => clearInterval(intervalRef.current);
@@ -92,6 +98,9 @@ export default function GamePage() {
 
   return (
     <div className={styles.box}>
+      {/* react-howler를 사용하여 음악을 재생 */}
+      {isSoundPlaying && <Howler src={gameSound} playing={true} loop={true} />}
+      
       <div className={styles.top}>
         <div style={leftstyle} className={styles.score}>
           000
