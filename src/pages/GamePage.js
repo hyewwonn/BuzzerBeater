@@ -11,9 +11,10 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 
 const Ball = ({ image }) => {
+
   return (
     <div className={styles.ball}>
-      <Image src={image} alt="ball" width={100} height={100} />
+      <Image src={image} alt="ball" className={styles.ballImg} />
     </div>
   );
 };
@@ -23,14 +24,18 @@ export default function GamePage() {
   const rightstyle = { float: 'right' };
   const ballImages = [bb, pb, ob, gb];
   const [ballsQueue, setBallsQueue] = useState([]);
-  const [time, setTime] = useState(10);
+  const [time, setTime] = useState(60);
   const intervalRef = useRef(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      const randomImage = ballImages[Math.floor(Math.random() * ballImages.length)];
       setBallsQueue(prevBallsQueue => {
-        const newBallsQueue = [...prevBallsQueue, randomImage].slice(-5);
+        if (prevBallsQueue.length === 5) {
+          clearInterval(intervalRef.current);
+          return prevBallsQueue;
+        }
+        const randomImage = ballImages[Math.floor(Math.random() * ballImages.length)];
+        const newBallsQueue = [randomImage, ...prevBallsQueue];
         return newBallsQueue;
       });
     }, 1000);
@@ -59,8 +64,12 @@ export default function GamePage() {
   return (
     <div className={styles.box}>
       <div className={styles.top}>
-        <div style={leftstyle} className={styles.score}>000</div>
-        <div style={rightstyle} className={styles.timeClock}>TIME {time < 10 ? `0${time}` : time}</div>
+        <div style={leftstyle} className={styles.score}>
+          000
+        </div>
+        <div style={rightstyle} className={styles.timeClock}>
+          TIME {time < 10 ? `0${time}` : time}
+        </div>
       </div>
       <div className={styles.ballsContainer}>
         <div className={styles.ballBox}>

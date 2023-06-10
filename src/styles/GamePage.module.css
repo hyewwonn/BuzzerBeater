@@ -36,18 +36,23 @@
 /* balls */
 .ballsContainer {
   width: 100%;
-  height: 55vh;
+  height: 60vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   position: absolute;
 }
 
 .ballBox{
-  height: 55vh;
+  height: auto;
   position: absolute;
   overflow: hidden;
+}
+
+.ballImg{
+  width: 10vh;
+  height: auto;
 }
 
 .balls {
