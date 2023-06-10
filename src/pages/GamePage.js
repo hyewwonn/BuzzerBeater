@@ -11,7 +11,6 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 
 const Ball = ({ image }) => {
-
   return (
     <div className={styles.ball}>
       <Image src={image} alt="ball" className={styles.ballImg} />
@@ -25,41 +24,61 @@ export default function GamePage() {
   const ballImages = [bb, pb, ob, gb];
   const [ballsQueue, setBallsQueue] = useState([]);
   const [time, setTime] = useState(60);
+  const [startCountdown, setStartCountdown] = useState(3);
+  const [showStart, setShowStart] = useState(true);
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setBallsQueue(prevBallsQueue => {
-        if (prevBallsQueue.length === 5) {
-          clearInterval(intervalRef.current);
-          return prevBallsQueue;
-        }
-        const randomImage = ballImages[Math.floor(Math.random() * ballImages.length)];
-        const newBallsQueue = [randomImage, ...prevBallsQueue];
-        return newBallsQueue;
-      });
-    }, 1000);
-
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(prevTime => {
-        const newTime = prevTime - 1;
-        return newTime < 0 ? 0 : newTime;
-      });
-    }, 1000);
-
-    if (time === 0) {
+    if (startCountdown > 0) {
+      intervalRef.current = setInterval(() => {
+        setStartCountdown(prevCount => prevCount - 1);
+      }, 1000);
+    } else {
       clearInterval(intervalRef.current);
-      setBallsQueue([]);
+
+      setTimeout(() => {
+        setShowStart(false);
+
+        intervalRef.current = setInterval(() => {
+          setBallsQueue(prevBallsQueue => {
+            if (prevBallsQueue.length === 5) {
+              clearInterval(intervalRef.current);
+              return prevBallsQueue;
+            }
+            const randomImage =
+              ballImages[Math.floor(Math.random() * ballImages.length)];
+            const newBallsQueue = [randomImage, ...prevBallsQueue];
+            return newBallsQueue;
+          });
+        }, 1000);
+
+        // 60초 카운트다운 시작
+        setTime(60);
+      }, 0); // 3초 후에 실행
     }
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [time]);
+    return () => clearInterval(intervalRef.current);
+  }, [startCountdown]);
+
+  useEffect(() => {
+    if (!showStart && time > 0) {
+      const interval = setInterval(() => {
+        setTime(prevTime => {
+          const newTime = prevTime - 1;
+          return newTime < 0 ? 0 : newTime;
+        });
+      }, 1000);
+
+      if (time === 0) {
+        clearInterval(intervalRef.current);
+        setBallsQueue([]);
+      }
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [showStart, time]);
 
   return (
     <div className={styles.box}>
@@ -88,6 +107,12 @@ export default function GamePage() {
           <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" />
         </div>
       </div>
+      {showStart && (
+        <div className={styles.startCountdown}>{startCountdown}</div>
+      )}
+      {!showStart && time === 60 && (
+        <div className={styles.startText}>START</div>
+      )}
     </div>
   );
 }
