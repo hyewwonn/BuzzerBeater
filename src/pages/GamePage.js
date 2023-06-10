@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/GamePage.module.css';
 import Image from 'next/image';
 import bb from '../../public/img/blueball.png';
@@ -23,9 +23,11 @@ export default function GamePage() {
   const rightstyle = { float: 'right' };
   const ballImages = [bb, pb, ob, gb];
   const [ballsQueue, setBallsQueue] = useState([]);
+  const [time, setTime] = useState(60);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       const randomImage = ballImages[Math.floor(Math.random() * ballImages.length)];
       setBallsQueue(prevBallsQueue => {
         // 큐의 크기를 제한하고 가장 오래된 이미지를 제거합니다.
@@ -34,14 +36,26 @@ export default function GamePage() {
       });
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalRef.current);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(prevTime => prevTime - 1);
+    }, 1000);
+
+    if (time === 0) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [time]);
 
   return (
     <div className={styles.box}>
       <div className={styles.top}>
         <div style={leftstyle} className={styles.score}>000</div>
-        <div style={rightstyle} className={styles.timeClock}>TIME 00</div>
+        <div style={rightstyle} className={styles.timeClock}>TIME {time < 10 ? `0${time}` : time}</div>
       </div>
       <div className={styles.ballsContainer}>
         <div className={styles.ballBox}>
