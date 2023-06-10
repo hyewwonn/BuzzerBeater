@@ -23,14 +23,13 @@ export default function GamePage() {
   const rightstyle = { float: 'right' };
   const ballImages = [bb, pb, ob, gb];
   const [ballsQueue, setBallsQueue] = useState([]);
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(10);
   const intervalRef = useRef(null);
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       const randomImage = ballImages[Math.floor(Math.random() * ballImages.length)];
       setBallsQueue(prevBallsQueue => {
-        // 큐의 크기를 제한하고 가장 오래된 이미지를 제거합니다.
         const newBallsQueue = [...prevBallsQueue, randomImage].slice(-5);
         return newBallsQueue;
       });
@@ -41,14 +40,20 @@ export default function GamePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(prevTime => prevTime - 1);
+      setTime(prevTime => {
+        const newTime = prevTime - 1;
+        return newTime < 0 ? 0 : newTime;
+      });
     }, 1000);
 
     if (time === 0) {
-      clearInterval(interval);
+      clearInterval(intervalRef.current);
+      setBallsQueue([]);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
   }, [time]);
 
   return (
