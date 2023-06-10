@@ -44,6 +44,16 @@
     transform: translate(-50%, -50%);
     animation: cloudMoving 25s linear infinite;
 }
+.cloudStart {
+    width: 80%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    opacity: 0.9;
+    transform: translate(-50%, 0%);
+    animation: cloudMoving2 25s linear;
+}
+
 .c2 {
     animation-delay: 12.5s;
 }
@@ -55,6 +65,14 @@
     }
     to {
         transform: translateX(110%);
+    }
+}
+@keyframes cloudMoving2 {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(220%);
     }
 }
 

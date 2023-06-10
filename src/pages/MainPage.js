@@ -8,6 +8,7 @@ import ob from '../../public/img/orangeball.png';
 import gb from '../../public/img/greenball.png';
 import c1 from '../../public/img/cloud1.png';
 import c2 from '../../public/img/cloud2.png';
+import c3 from '../../public/img/cloud3.png';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <div className={styles['bg-container']}>
           <Image className={`${styles.cloud} ${styles.c1}`} src={c1} alt="cloud" />
           <Image className={`${styles.cloud} ${styles.c2}`} src={c2} alt="cloud" />
+          <Image className={`${styles.cloudStart} ${styles.c3}`} src={c3} alt="cloud" />
           <Image className={styles.goalpost} src={goalpost} alt="goalpost" />
           <Image className={styles.blueball} src={bb} alt="blueball" />
           <Image className={styles.orangeball} src={ob} alt="orangeball" />
