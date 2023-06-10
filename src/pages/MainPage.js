@@ -9,6 +9,7 @@ import gb from '../../public/img/greenball.png';
 import c1 from '../../public/img/cloud1.png';
 import c2 from '../../public/img/cloud2.png';
 import c3 from '../../public/img/cloud3.png';
+import trophy from '../../public/img/trophy.svg';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         <div className={styles.btn}>
           <a className={styles.a} href="RulePage"><button className={styles['how-btn']}>게임방법 </button></a>
           <a className={styles.a} href="GamePage"><button className={styles['start-btn']}>게임시작 </button></a>
+        </div>
+        <div className={styles.rankingbtn}>
+          <a className={styles.a} href="Ranking"><button className={styles['ranking-btn']}><Image className={styles['ranking-icon']} src={trophy} alt="trophy"/></button></a>
         </div>
       </div>
     </div>
