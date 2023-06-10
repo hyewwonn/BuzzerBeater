@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '../styles/GamePage.module.css';
 import Image from 'next/image';
-import Howler from 'react-howler'; // react-howler 라이브러리 임포트
+import Howler from 'react-howler';
 import bb from '../../public/img/blueball.png';
 import pb from '../../public/img/pinkball2.png';
 import ob from '../../public/img/orangeball.png';
@@ -28,21 +28,18 @@ export default function GamePage() {
   const [time, setTime] = useState(60);
   const [startCountdown, setStartCountdown] = useState(3);
   const [showStart, setShowStart] = useState(true);
-  const [isSoundPlaying, setIsSoundPlaying] = useState(false); // 음악 재생 상태를 저장하는 상태 변수
+  const [isSoundPlaying, setIsSoundPlaying] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    // 게임 시작 전 카운트다운 처리
     if (startCountdown > 0) {
       intervalRef.current = setInterval(() => {
         setStartCountdown(prevCount => prevCount - 1);
       }, 1000);
     } else {
       clearInterval(intervalRef.current);
-
       setShowStart(false);
 
-      // 1초 후에 5개의 랜덤한 공 추가
       setTimeout(() => {
         setBallsQueue(Array(5).fill().map(() => {
           const randomImage =
@@ -51,7 +48,6 @@ export default function GamePage() {
         }));
       }, 1000);
 
-      // 1초마다 공 추가
       intervalRef.current = setInterval(() => {
         setBallsQueue(prevBallsQueue => {
           if (prevBallsQueue.length === 5) {
@@ -65,10 +61,7 @@ export default function GamePage() {
         });
       }, 1000);
 
-      // 60초 카운트다운 시작
       setTime(60);
-
-      // 음악 재생 시작
       setIsSoundPlaying(true);
     }
 
@@ -76,19 +69,18 @@ export default function GamePage() {
   }, [startCountdown]);
 
   useEffect(() => {
-    // 게임 시작 후 타이머 처리
     if (!showStart && time > 0) {
       const interval = setInterval(() => {
         setTime(prevTime => {
           const newTime = prevTime - 1;
+          if (newTime === 0) {
+            setIsSoundPlaying(false);
+            clearInterval(intervalRef.current);
+            setBallsQueue([]);
+          }
           return newTime < 0 ? 0 : newTime;
         });
       }, 1000);
-
-      if (time === 0) {
-        clearInterval(intervalRef.current);
-        setBallsQueue([]);
-      }
 
       return () => {
         clearInterval(interval);
@@ -98,9 +90,7 @@ export default function GamePage() {
 
   return (
     <div className={styles.box}>
-      {/* react-howler를 사용하여 음악을 재생 */}
-      {isSoundPlaying && <Howler src={gameSound} playing={true} loop={true} />}
-      
+      <Howler src={gameSound} playing={isSoundPlaying} loop={true} />
       <div className={styles.top}>
         <div style={leftstyle} className={styles.score}>
           000
