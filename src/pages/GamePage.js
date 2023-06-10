@@ -22,13 +22,14 @@ export default function GamePage() {
   const leftstyle = { float: 'left' };
   const rightstyle = { float: 'right' };
   const ballImages = [bb, pb, ob, gb];
-  const [ballsQueue, setBallsQueue] = useState([]);
-  const [time, setTime] = useState(60);
-  const [startCountdown, setStartCountdown] = useState(3);
-  const [showStart, setShowStart] = useState(true);
-  const intervalRef = useRef(null);
+  const [ballsQueue, setBallsQueue] = useState([]); // 게임 화면에 표시되는 공들의 이미지 경로를 저장하는 배열
+  const [time, setTime] = useState(60); // 게임의 남은 시간
+  const [startCountdown, setStartCountdown] = useState(3); // 게임 시작 전 카운트다운
+  const [showStart, setShowStart] = useState(true); // 게임 시작 전 카운트다운 또는 "START" 표시 여부
+  const intervalRef = useRef(null); // setInterval 반환 값 저장용 Ref
 
   useEffect(() => {
+    // 게임 시작 전 카운트다운 처리
     if (startCountdown > 0) {
       intervalRef.current = setInterval(() => {
         setStartCountdown(prevCount => prevCount - 1);
@@ -36,31 +37,40 @@ export default function GamePage() {
     } else {
       clearInterval(intervalRef.current);
 
+      setShowStart(false);
+
+      // 1초 후에 5개의 랜덤한 공 추가
       setTimeout(() => {
-        setShowStart(false);
+        setBallsQueue(Array(5).fill().map(() => {
+          const randomImage =
+            ballImages[Math.floor(Math.random() * ballImages.length)];
+          return randomImage;
+        }));
+      }, 1000);
 
-        intervalRef.current = setInterval(() => {
-          setBallsQueue(prevBallsQueue => {
-            if (prevBallsQueue.length === 5) {
-              clearInterval(intervalRef.current);
-              return prevBallsQueue;
-            }
-            const randomImage =
-              ballImages[Math.floor(Math.random() * ballImages.length)];
-            const newBallsQueue = [randomImage, ...prevBallsQueue];
-            return newBallsQueue;
-          });
-        }, 1000);
+      // 1초마다 공 추가
+      intervalRef.current = setInterval(() => {
+        setBallsQueue(prevBallsQueue => {
+          if (prevBallsQueue.length === 5) {
+            clearInterval(intervalRef.current);
+            return prevBallsQueue;
+          }
+          const randomImage =
+            ballImages[Math.floor(Math.random() * ballImages.length)];
+          const newBallsQueue = [randomImage, ...prevBallsQueue];
+          return newBallsQueue;
+        });
+      }, 1000);
 
-        // 60초 카운트다운 시작
-        setTime(60);
-      }, 0); // 3초 후에 실행
+      // 60초 카운트다운 시작
+      setTime(60);
     }
 
     return () => clearInterval(intervalRef.current);
   }, [startCountdown]);
 
   useEffect(() => {
+    // 게임 시작 후 타이머 처리
     if (!showStart && time > 0) {
       const interval = setInterval(() => {
         setTime(prevTime => {
