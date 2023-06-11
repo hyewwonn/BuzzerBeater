@@ -11,6 +11,7 @@ import pgp from '../../public/img/pinkgoalpost.png';
 import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
+import countDown from '../../public/audio/countDown.mp3';
 
 const Ball = ({ image }) => {
   return (
@@ -87,6 +88,15 @@ export default function GamePage() {
       };
     }
   }, [showStart, time]);
+
+  useEffect(() => {
+    if (showStart && startCountdown === 3) {
+      const countDownAudio = new Audio(countDown);
+      countDownAudio.play().catch(error => {
+        console.log('Error playing countDown audio:', error);
+      });
+    }
+  }, [showStart, startCountdown]);
 
   return (
     <div className={styles.box}>
