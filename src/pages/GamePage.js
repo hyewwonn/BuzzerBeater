@@ -40,15 +40,17 @@ export default function GamePage() {
     } else {
       clearInterval(intervalRef.current);
       setShowStart(false);
-
+  
       setTimeout(() => {
         setBallsQueue(Array(5).fill().map(() => {
           const randomImage =
             ballImages[Math.floor(Math.random() * ballImages.length)];
           return randomImage;
         }));
+        setTime(60);
+        setIsSoundPlaying(true); // 사운드 재생을 지연시키기 위해 setTimeout 안으로 이동합니다.
       }, 1000);
-
+  
       intervalRef.current = setInterval(() => {
         setBallsQueue(prevBallsQueue => {
           if (prevBallsQueue.length === 5) {
@@ -61,11 +63,8 @@ export default function GamePage() {
           return newBallsQueue;
         });
       }, 1000);
-
-      setTime(60);
-      setIsSoundPlaying(true);
     }
-
+  
     return () => clearInterval(intervalRef.current);
   }, [startCountdown]);
 
