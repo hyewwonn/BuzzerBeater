@@ -113,6 +113,19 @@ export default function GamePage() {
     }
   }, [showStart, startCountdown]);
 
+  // const animateInsertGoal = () => {
+  //   const ballElement = document.querySelector('.ball');
+  //   const goalpostElement = document.querySelector('.goalpost');
+  
+  //   // 공이 골대에 들어가는 애니메이션 효과를 줄 클래스를 추가
+  //   ballElement.classList.add('goal-animation');
+  
+  //   // 애니메이션 종료 후 초기화
+  //   setTimeout(() => {
+  //     ballElement.classList.remove('goal-animation');
+  //   }, 1000);
+  // };
+
   // Ball 컴포넌트에서 getColorAltText 함수를 가져오도록 수정
   const getColorAltText = (color) => {
     if (color === bb) {
@@ -132,7 +145,7 @@ export default function GamePage() {
 
     if (currentBallColor === goalColor) {
       // 색상이 일치하는 경우
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => prevScore + 2);
       console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
       // 실제로 골을 넣는 동작을 구현하세요.
     } else {
@@ -146,35 +159,35 @@ export default function GamePage() {
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowUp') {
         if (currentBallColor === gb) {
+          setScore((prevScore) => prevScore + 2);
           console.log('연두색 골대에 골을 넣었습니다.');
         } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
+          setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
-        } else {
-          return;
         }
       } else if (event.key === 'ArrowDown') {
         if (currentBallColor === bb) {
+          setScore((prevScore) => prevScore + 2);
           console.log('파란색 골대에 골을 넣었습니다.');
         } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
+          setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
-        } else {
-          return;
         }
       } else if (event.key === 'ArrowRight') {
         if (currentBallColor === ob) {
+          setScore((prevScore) => prevScore + 2);
           console.log('주황색 골대에 골을 넣었습니다.');
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
+          setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
-        } else {
-          return;
         }
       } else if (event.key === 'ArrowLeft') {
         if (currentBallColor === pb) {
+          setScore((prevScore) => prevScore + 2);
           console.log('분홍색 골대에 골을 넣었습니다.');
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
+          setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
-        } else {
-          return;
         }
       }
     };
@@ -207,13 +220,12 @@ export default function GamePage() {
         </div>
       </div>
       <div className={styles.goalPostsContainer}>
-      <div className={styles.goalPosts}>
-      <Image className={styles.blueGoalpost} src={bgp} alt="blue-goalpost" onClick={() => handleGoalClick('blue')} />
-      <Image className={styles.pinkGoalpost} src={pgp} alt="pink-goalpost" onClick={() => handleGoalClick('pink')} />
-      <Image className={styles.greenGoalpost} src={ggp} alt="green-goalpost" onClick={() => handleGoalClick('green')} />
-      <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" onClick={() => handleGoalClick('orange')} />
-      </div>
-
+        <div className={styles.goalPosts}>
+          <Image className={styles.blueGoalpost} src={bgp} alt="blue-goalpost" onClick={() => handleGoalClick('blue')} />
+          <Image className={styles.pinkGoalpost} src={pgp} alt="pink-goalpost" onClick={() => handleGoalClick('pink')} />
+          <Image className={styles.greenGoalpost} src={ggp} alt="green-goalpost" onClick={() => handleGoalClick('green')} />
+          <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" onClick={() => handleGoalClick('orange')} />
+        </div>
       </div>
       {showStart && (
         <div className={styles.startCountdown}>{startCountdown}</div>
