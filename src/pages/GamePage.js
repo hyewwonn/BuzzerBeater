@@ -35,7 +35,6 @@ const Ball = ({ image }) => {
   );
 };
 
-
 export default function GamePage() {
   const leftstyle = { float: 'left' };
   const rightstyle = { float: 'right' };
@@ -115,83 +114,77 @@ export default function GamePage() {
   }, [showStart, startCountdown]);
 
   // Ball 컴포넌트에서 getColorAltText 함수를 가져오도록 수정
-const getColorAltText = (color) => {
-  if (color === bb) {
-    return 'blue';
-  } else if (color === pb) {
-    return 'pink';
-  } else if (color === ob) {
-    return 'orange';
-  } else if (color === gb) {
-    return 'green';
-  }
-};
+  const getColorAltText = (color) => {
+    if (color === bb) {
+      return 'blue';
+    } else if (color === pb) {
+      return 'pink';
+    } else if (color === ob) {
+      return 'orange';
+    } else if (color === gb) {
+      return 'green';
+    }
+  };
 
-// handleGoalClick 함수에서 getColorAltText를 가져와 사용
-const handleGoalClick = (goalColor) => {
-  const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
+  // handleGoalClick 함수에서 getColorAltText를 가져와 사용
+  const handleGoalClick = (goalColor) => {
+    const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
 
-  if (currentBallColor === goalColor) {
-    // 색상이 일치하는 경우
-    setScore((prevScore) => prevScore + 1);
-    console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
-    // 실제로 골을 넣는 동작을 구현하세요.
-  } else {
-    console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
-    // 다른 색상이면 튕겨나가는 애니메이션 등을 구현할 수 있습니다.
-  }
-};
-
+    if (currentBallColor === goalColor) {
+      // 색상이 일치하는 경우
+      setScore((prevScore) => prevScore + 1);
+      console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
+      // 실제로 골을 넣는 동작을 구현하세요.
+    } else {
+      console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
+      // 다른 색상이면 튕겨나가는 애니메이션 등을 구현할 수 있습니다.
+    }
+  };
   
   useEffect(() => {
     const currentBallColor = ballsQueue[0]; // 현재 나오고 있는 공의 색깔
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowUp') {
-        if (currentBallColor == gb) {
-          console.log('연두색 공!!!');
+        if (currentBallColor === gb) {
+          console.log('연두색 골대에 골을 넣었습니다.');
+        } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
         } else {
           return;
         }
       } else if (event.key === 'ArrowDown') {
-        if (currentBallColor == bb) {
-          console.log('파란색 공!!!');
+        if (currentBallColor === bb) {
+          console.log('파란색 골대에 골을 넣었습니다.');
+        } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
         } else {
           return;
         }
       } else if (event.key === 'ArrowRight') {
-        if (currentBallColor == ob) {
-          console.log('주황색 공!!!');
+        if (currentBallColor === ob) {
+          console.log('주황색 골대에 골을 넣었습니다.');
+        } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
         } else {
           return;
         }
       } else if (event.key === 'ArrowLeft') {
-        if (currentBallColor == pb) {
-          console.log('분홍색 공!!!');
+        if (currentBallColor === pb) {
+          console.log('분홍색 골대에 골을 넣었습니다.');
+        } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
         } else {
           return;
         }
       }
     };
-
+  
     window.addEventListener('keydown', handleKeyDown);
-
+  
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
-
-  const insertBallToBasket = (color) => {
-    setScore((prevScore) => prevScore + 1);
-    if(`${color}`=='green') {
-      console.log(`[${color}] 골대에 골을 넣었습니다.`);
-    } else if(`${color}`=='blue') {
-      console.log(`[${color}] 골대에 골을 넣었습니다.`);
-    } else if(`${color}`=='orange') {
-      console.log(`[${color}] 골대에 골을 넣었습니다.`);
-    } else if(`${color}`=='pink') {
-      console.log(`[${color}] 골대에 골을 넣었습니다.`);
-    }
-  };
+  }, [ballsQueue]);  
 
   return (
     <div className={styles.box}>
