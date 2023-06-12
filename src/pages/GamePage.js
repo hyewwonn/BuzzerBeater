@@ -14,12 +14,27 @@ import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
 
 const Ball = ({ image }) => {
+  const getColorAltText = (color) => {
+    if (color === bb) {
+      return 'blue';
+    } else if (color === pb) {
+      return 'pink';
+    } else if (color === ob) {
+      return 'orange';
+    } else if (color === gb) {
+      return 'green';
+    }
+  };
+
+  const colorAlt = getColorAltText(image);
+
   return (
     <div className={styles.ball}>
-      <Image src={image} alt="ball" className={styles.ballImg} />
+      <Image src={image} alt={colorAlt} className={styles.ballImg} />
     </div>
   );
 };
+
 
 export default function GamePage() {
   const leftstyle = { float: 'left' };
@@ -31,6 +46,7 @@ export default function GamePage() {
   const [showStart, setShowStart] = useState(true);
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);
   const intervalRef = useRef(null);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     if (startCountdown > 0) {
@@ -40,17 +56,15 @@ export default function GamePage() {
     } else {
       clearInterval(intervalRef.current);
       setShowStart(false);
-  
+
       setTimeout(() => {
         setBallsQueue(Array(5).fill().map(() => {
           const randomImage =
             ballImages[Math.floor(Math.random() * ballImages.length)];
           return randomImage;
         }));
-        setTime(60);
-        setIsSoundPlaying(true); // 사운드 재생을 지연시키기 위해 setTimeout 안으로 이동합니다.
       }, 1000);
-  
+
       intervalRef.current = setInterval(() => {
         setBallsQueue(prevBallsQueue => {
           if (prevBallsQueue.length === 5) {
@@ -63,8 +77,11 @@ export default function GamePage() {
           return newBallsQueue;
         });
       }, 1000);
+
+      setTime(60);
+      setIsSoundPlaying(true);
     }
-  
+
     return () => clearInterval(intervalRef.current);
   }, [startCountdown]);
 
@@ -97,12 +114,91 @@ export default function GamePage() {
     }
   }, [showStart, startCountdown]);
 
+  // Ball 컴포넌트에서 getColorAltText 함수를 가져오도록 수정
+const getColorAltText = (color) => {
+  if (color === bb) {
+    return 'blue';
+  } else if (color === pb) {
+    return 'pink';
+  } else if (color === ob) {
+    return 'orange';
+  } else if (color === gb) {
+    return 'green';
+  }
+};
+
+// handleGoalClick 함수에서 getColorAltText를 가져와 사용
+const handleGoalClick = (goalColor) => {
+  const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
+
+  if (currentBallColor === goalColor) {
+    // 색상이 일치하는 경우
+    setScore((prevScore) => prevScore + 1);
+    console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
+    // 실제로 골을 넣는 동작을 구현하세요.
+  } else {
+    console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
+    // 다른 색상이면 튕겨나가는 애니메이션 등을 구현할 수 있습니다.
+  }
+};
+
+  
+  useEffect(() => {
+    const currentBallColor = ballsQueue[0]; // 현재 나오고 있는 공의 색깔
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowUp') {
+        if (currentBallColor == gb) {
+          console.log('연두색 공!!!');
+        } else {
+          return;
+        }
+      } else if (event.key === 'ArrowDown') {
+        if (currentBallColor == bb) {
+          console.log('파란색 공!!!');
+        } else {
+          return;
+        }
+      } else if (event.key === 'ArrowRight') {
+        if (currentBallColor == ob) {
+          console.log('주황색 공!!!');
+        } else {
+          return;
+        }
+      } else if (event.key === 'ArrowLeft') {
+        if (currentBallColor == pb) {
+          console.log('분홍색 공!!!');
+        } else {
+          return;
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const insertBallToBasket = (color) => {
+    setScore((prevScore) => prevScore + 1);
+    if(`${color}`=='green') {
+      console.log(`[${color}] 골대에 골을 넣었습니다.`);
+    } else if(`${color}`=='blue') {
+      console.log(`[${color}] 골대에 골을 넣었습니다.`);
+    } else if(`${color}`=='orange') {
+      console.log(`[${color}] 골대에 골을 넣었습니다.`);
+    } else if(`${color}`=='pink') {
+      console.log(`[${color}] 골대에 골을 넣었습니다.`);
+    }
+  };
+
   return (
     <div className={styles.box}>
       <Howler src={gameSound} playing={isSoundPlaying} loop={true} />
       <div className={styles.top}>
         <div style={leftstyle} className={styles.score}>
-          000
+          {`${score}`}
         </div>
         <div style={rightstyle} className={styles.timeClock}>
           TIME {time < 10 ? `0${time}` : time}
@@ -118,12 +214,13 @@ export default function GamePage() {
         </div>
       </div>
       <div className={styles.goalPostsContainer}>
-        <div className={styles.goalPosts}>
-          <Image className={styles.blueGoalpost} src={bgp} alt="blue-goalpost" />
-          <Image className={styles.pinkGoalpost} src={pgp} alt="pink-goalpost" />
-          <Image className={styles.greenGoalpost} src={ggp} alt="green-goalpost" />
-          <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" />
-        </div>
+      <div className={styles.goalPosts}>
+      <Image className={styles.blueGoalpost} src={bgp} alt="blue-goalpost" onClick={() => handleGoalClick('blue')} />
+      <Image className={styles.pinkGoalpost} src={pgp} alt="pink-goalpost" onClick={() => handleGoalClick('pink')} />
+      <Image className={styles.greenGoalpost} src={ggp} alt="green-goalpost" onClick={() => handleGoalClick('green')} />
+      <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" onClick={() => handleGoalClick('orange')} />
+      </div>
+
       </div>
       {showStart && (
         <div className={styles.startCountdown}>{startCountdown}</div>
