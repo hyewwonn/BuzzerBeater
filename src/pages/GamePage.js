@@ -13,7 +13,7 @@ import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
 
-const Ball = ({ image }) => {
+const Ball = ({ image, isActive }) => {
   const getColorAltText = (color) => {
     if (color === bb) {
       return 'blue';
@@ -25,11 +25,11 @@ const Ball = ({ image }) => {
       return 'green';
     }
   };
-
+  
   const colorAlt = getColorAltText(image);
 
   return (
-    <div className={styles.ball}>
+    <div className={`${styles.ball} ${isActive ? styles.active : ''}`}>
       <Image src={image} alt={colorAlt} className={styles.ballImg} />
     </div>
   );
@@ -46,6 +46,7 @@ export default function GamePage() {
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);
   const intervalRef = useRef(null);
   const [score, setScore] = useState(0);
+  const [isGoalActive, setIsGoalActive] = useState(false);
 
   useEffect(() => {
     if (startCountdown > 0) {
@@ -113,19 +114,6 @@ export default function GamePage() {
     }
   }, [showStart, startCountdown]);
 
-  // const animateInsertGoal = () => {
-  //   const ballElement = document.querySelector('.ball');
-  //   const goalpostElement = document.querySelector('.goalpost');
-  
-  //   // 공이 골대에 들어가는 애니메이션 효과를 줄 클래스를 추가
-  //   ballElement.classList.add('goal-animation');
-  
-  //   // 애니메이션 종료 후 초기화
-  //   setTimeout(() => {
-  //     ballElement.classList.remove('goal-animation');
-  //   }, 1000);
-  // };
-
   // Ball 컴포넌트에서 getColorAltText 함수를 가져오도록 수정
   const getColorAltText = (color) => {
     if (color === bb) {
@@ -142,12 +130,18 @@ export default function GamePage() {
   // handleGoalClick 함수에서 getColorAltText를 가져와 사용
   const handleGoalClick = (goalColor) => {
     const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
-
+    
     if (currentBallColor === goalColor) {
       // 색상이 일치하는 경우
       setScore((prevScore) => prevScore + 2);
       console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
+
       // 실제로 골을 넣는 동작을 구현하세요.
+      setIsGoalActive(true);
+      // 일정 시간 후에 애니메이션 클래스를 제거
+      setTimeout(() => {
+        setIsGoalActive(false);
+      }, 1000);
     } else {
       console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
       // 다른 색상이면 튕겨나가는 애니메이션 등을 구현할 수 있습니다.
@@ -161,6 +155,12 @@ export default function GamePage() {
         if (currentBallColor === gb) {
           setScore((prevScore) => prevScore + 2);
           console.log('연두색 골대에 골을 넣었습니다.');
+          // 실제로 골을 넣는 동작을 구현하세요.
+          setIsGoalActive(true);
+          // 일정 시간 후에 애니메이션 클래스를 제거
+          setTimeout(() => {
+            setIsGoalActive(false);
+          }, 1000);
         } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -169,6 +169,12 @@ export default function GamePage() {
         if (currentBallColor === bb) {
           setScore((prevScore) => prevScore + 2);
           console.log('파란색 골대에 골을 넣었습니다.');
+          // 실제로 골을 넣는 동작을 구현하세요.
+          setIsGoalActive(true);
+          // 일정 시간 후에 애니메이션 클래스를 제거
+          setTimeout(() => {
+            setIsGoalActive(false);
+          }, 1000);
         } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -177,6 +183,12 @@ export default function GamePage() {
         if (currentBallColor === ob) {
           setScore((prevScore) => prevScore + 2);
           console.log('주황색 골대에 골을 넣었습니다.');
+          // 실제로 골을 넣는 동작을 구현하세요.
+          setIsGoalActive(true);
+          // 일정 시간 후에 애니메이션 클래스를 제거
+          setTimeout(() => {
+            setIsGoalActive(false);
+          }, 1000);
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -185,6 +197,12 @@ export default function GamePage() {
         if (currentBallColor === pb) {
           setScore((prevScore) => prevScore + 2);
           console.log('분홍색 골대에 골을 넣었습니다.');
+          // 실제로 골을 넣는 동작을 구현하세요.
+          setIsGoalActive(true);
+          // 일정 시간 후에 애니메이션 클래스를 제거
+          setTimeout(() => {
+            setIsGoalActive(false);
+          }, 1000);
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -214,7 +232,7 @@ export default function GamePage() {
         <div className={styles.ballBox}>
           <div className={styles.balls}>
             {ballsQueue.map((image, index) => (
-              <Ball key={index} image={image} />
+              <Ball key={index} image={image} isActive={index === 0 && isGoalActive}/>
             ))}
           </div>
         </div>
