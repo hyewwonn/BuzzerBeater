@@ -35,6 +35,12 @@ const Ball = ({ image, isActive }) => {
   );
 };
 
+function getPosition(element) {
+  const rect = element.getBoundingClientRect();
+  const { left, top } = rect;
+  return { x: left, y: top };
+}
+
 export default function GamePage() {
   const leftstyle = { float: 'left' };
   const rightstyle = { float: 'right' };
@@ -47,6 +53,8 @@ export default function GamePage() {
   const intervalRef = useRef(null);
   const [score, setScore] = useState(0);
   const [isGoalActive, setIsGoalActive] = useState(false);
+  const goalRef = useRef(null);
+  const [goalPosition, setGoalPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (startCountdown > 0) {
@@ -215,7 +223,14 @@ export default function GamePage() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [ballsQueue]);  
+  }, [ballsQueue]); 
+  
+  useEffect(() => {
+    const goalElement = goalRef.current;
+    const { x, y } = getPosition(goalElement);
+    console.log('Goal position - x:', x, 'y:', y);
+    setGoalPosition({ x, y });
+  }, []);
 
   return (
     <div className={styles.box}>
@@ -239,10 +254,10 @@ export default function GamePage() {
       </div>
       <div className={styles.goalPostsContainer}>
         <div className={styles.goalPosts}>
-          <Image className={styles.blueGoalpost} src={bgp} alt="blue-goalpost" onClick={() => handleGoalClick('blue')} />
-          <Image className={styles.pinkGoalpost} src={pgp} alt="pink-goalpost" onClick={() => handleGoalClick('pink')} />
-          <Image className={styles.greenGoalpost} src={ggp} alt="green-goalpost" onClick={() => handleGoalClick('green')} />
-          <Image className={styles.orangeGoalpost} src={ogp} alt="orange-goalpost" onClick={() => handleGoalClick('orange')} />
+          <Image className={styles.blueGoalpost} ref={goalRef} src={bgp} alt="blue-goalpost" onClick={() => handleGoalClick('blue')} />
+          <Image className={styles.pinkGoalpost} ref={goalRef} src={pgp} alt="pink-goalpost" onClick={() => handleGoalClick('pink')} />
+          <Image className={styles.greenGoalpost} ref={goalRef} src={ggp} alt="green-goalpost" onClick={() => handleGoalClick('green')} />
+          <Image className={styles.orangeGoalpost} ref={goalRef} src={ogp} alt="orange-goalpost" onClick={() => handleGoalClick('orange')} />
         </div>
       </div>
       {showStart && (
