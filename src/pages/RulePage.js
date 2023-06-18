@@ -1,12 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import ob from '../../public/img/orangeball.png';
 import styles from '../styles/PCrule.module.css';
 import mobileStyles from '../styles/MOBILErule.module.css';
+import basicSound from '../../public/audio/basicSound.mp3';
+import btnSound from '../../public/audio/btnClickSound.mp3';
 
 function Rule() {
   const ballStyle = { float: 'left' };
   const [isMobile, setIsMobile] = useState(false); // 모바일인지 여부를 상태로 관리
+  const audioRef = useRef(null);
+  const btnAudioRef = useRef(null); // Add this line to initialize btnAudioRef
+
+  useEffect(() => {
+    audioRef.current.play();
+  }, []);
+
+  const handleClick = () => {
+    btnAudioRef.current.play();
+  };
 
   useEffect(() => {
     // 화면 크기 변화 감지
@@ -78,10 +90,12 @@ function Rule() {
           </div>
         </div>
         <div className={isMobile ? mobileStyles.button : styles.button}>
-          <a className={styles.a} href="MainPage"><button className={isMobile ? mobileStyles['btn-first'] : styles['btn-first']}>처음으로 </button></a>
-          <a className={styles.a} href="GamePage"><button className={isMobile ? mobileStyles['btn-start'] : styles['btn-start']}>게임시작 </button></a>
+          <a className={styles.a} href="MainPage"><button className={isMobile ? mobileStyles['btn-first'] : styles['btn-first']} onClick={handleClick}>처음으로 </button></a>
+          <a className={styles.a} href="GamePage"><button className={isMobile ? mobileStyles['btn-start'] : styles['btn-start']} onClick={handleClick}>게임시작 </button></a>
         </div>
       </div>
+      <audio ref={audioRef} src={basicSound} autoPlay loop />
+      <audio ref={btnAudioRef} src={btnSound} />
     </div>
   );
 }
