@@ -60,7 +60,7 @@ function Rule() {
         <div className={isMobile ? mobileStyles.main : styles.main}>
           <div className={isMobile ? mobileStyles.rule1 : styles.rule1}>
             <div className={isMobile ? mobileStyles.ruletit1 : styles.ruletit1}>
-              경기규칙1.
+              경기 규칙 1.
             </div>
             <div className={isMobile ? mobileStyles.rulecon1 : styles.rulecon1}>
               {isMobile
@@ -70,7 +70,7 @@ function Rule() {
           </div>
           <div className={isMobile ? mobileStyles.rule2 : styles.rule2}>
             <div className={isMobile ? mobileStyles.ruletit2 : styles.ruletit2}>
-              경기규칙2.
+              경기 규칙 2.
             </div>
             <div className={isMobile ? mobileStyles.rulecon2 : styles.rulecon2}>
               농구공을 맞게 던지면 점수가 올라가고 Combo 획득!
