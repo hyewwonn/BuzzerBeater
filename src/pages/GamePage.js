@@ -13,9 +13,8 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
-// import firebase from '../../firebase';
+import firebase from '../../firebase';
 import { getFirestore, collection, query, where, getDocs, doc, getDoc, listCollections } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged, getUser } from 'firebase/auth';
 
   const Ball = ({ image, isActive }) => {
     const getColorAltText = (color) => {
@@ -330,6 +329,7 @@ import { getAuth, onAuthStateChanged, getUser } from 'firebase/auth';
         {showModal && (
           <div className={styles.modal}>
             <form ref={modal} onSubmit={handleSubmit} className={styles.modalform}>
+              <div className={styles.modalscore}>점수 : {score}</div>
               <input
                 type="text"
                 placeholder="이름"
