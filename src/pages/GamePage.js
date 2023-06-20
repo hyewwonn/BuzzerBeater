@@ -258,7 +258,7 @@ import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
     // modal
     const handleNameChange = (e) => {
       const inputValue = e.target.value;
-      if (inputValue.length <= 15) {
+      if (inputValue.length <= 10) {
         setName(inputValue);
       }
     };
@@ -267,7 +267,7 @@ import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
       e.preventDefault();
     
       try {
-        await setDoc(doc(db, "ranking", score.toString()), {
+        await setDoc(doc(db, "ranking", name), {
           name: name,
           score: score
         });

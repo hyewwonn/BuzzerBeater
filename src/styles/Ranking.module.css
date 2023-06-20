@@ -35,17 +35,31 @@
     color: #666;
     font-size: 1.2rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
+.titlerank {
+    padding-left: 30px;
+}
+.titlescore {
+    padding-right: 30px;
+}
+
 .ranks {
     width: 100%;
-    height: 70%;
+    height: 25.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 5px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
 }
+.ranks::-webkit-scrollbar {
+    display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 .rank {
     width: 80%;
     height: 3rem;
@@ -57,8 +71,20 @@
     font-weight: 700;
     font-size: 1.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+}
+
+.gameRank {
+    padding-left: 30px;
+}
+.name {
+    max-width: 25rem;
+    overflow: hidden;
+    word-break: keep-all;
+}
+.score {
+    padding-right: 30px;
 }
 
 .btnContainer {
