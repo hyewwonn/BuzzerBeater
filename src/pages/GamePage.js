@@ -244,6 +244,42 @@
       setGoalPosition({ x, y });
     }, []);
 
+    // modal
+    const handleNameChange = (e) => {
+      const inputValue = e.target.value;
+      if (inputValue.length <= 15) {
+        setName(inputValue);
+      }
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      setShowModal(false);
+      router.push('/Ranking');
+    }
+
+    useEffect(() => {
+      if (!showStart && time > 0) {
+        const interval = setInterval(() => {
+          setTime(prevTime => {
+            const newTime = prevTime - 1;
+            if (newTime === 0) {
+              setIsSoundPlaying(false);
+              clearInterval(intervalRef.current);
+              setBallsQueue([]);
+              setShowModal(true);
+            }
+            return newTime < 0 ? 0 : newTime;
+          });
+        }, 1000);
+    
+        return () => {
+          clearInterval(interval);
+        };
+      }
+    }, [showStart, time]);  
+
     return (
       <div className={styles.box}>
         <Howler src={gameSound} playing={isSoundPlaying} loop={true} />
