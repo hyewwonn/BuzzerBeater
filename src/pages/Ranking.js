@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Ranking.module.css';
 
 function Ranking() {
+  const name = "name";
+  const score = 2000;
 
   return (
     <div className={styles.rankingContainer}>
@@ -12,9 +14,9 @@ function Ranking() {
             <p className={styles.titlename}>name</p>
             <p className={styles.titlescore}>score</p>
           </div>
-          <div className={styles.rank} key={index}>
-            <p className={styles.name}>{rank.name}</p>
-            <p className={styles.score}>{rank.score}</p>
+          <div className={styles.rank}>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.score}>{score}</p>
           </div>
         </div>
         <div className={styles.btnContainer}>
