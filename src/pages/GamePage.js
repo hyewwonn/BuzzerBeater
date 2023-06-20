@@ -14,7 +14,7 @@ import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
 import firebase from '../../firebase';
-import { getFirestore, collection, query, where, getDocs, doc, getDoc, listCollections } from 'firebase/firestore';
+import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
 
   const Ball = ({ image, isActive }) => {
     const getColorAltText = (color) => {
@@ -48,7 +48,7 @@ import { getFirestore, collection, query, where, getDocs, doc, getDoc, listColle
       </div>
     );
   };
-  
+
 
   function getPosition(element) {
     const rect = element.getBoundingClientRect();
@@ -265,10 +265,22 @@ import { getFirestore, collection, query, where, getDocs, doc, getDoc, listColle
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-
+    
+      try {
+        await setDoc(doc(db, "ranking", score.toString()), {
+          name: name,
+          score: score
+        });
+        console.log('Document written with ID:', score.toString());
+      } catch (error) {
+        console.error('Error adding document:', error);
+      }
+    
       setShowModal(false);
       router.push('/Ranking');
-    }
+    };
+    
+    
 
     useEffect(() => {
       if (!showStart && time > 0) {
