@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import styles from '../styles/MainPage.module.css';
 import Image from 'next/image';
-import logo from '../../public/img/logo.png';
+import logo from '../../public/img/logo-h.png';
 import goalpost from '../../public/img/goalpost.png';
 import bb from '../../public/img/blueball.png';
 import pb from '../../public/img/pinkball.png';
