@@ -149,14 +149,26 @@
     .pinkball {
         animation: rotate-ball-left infinite 5s linear;
     }
+    .pinkball:hover {
+        animation: rotate-ball-left infinite 1.5s linear;
+    }
     .orangeball {
         animation: rotate-ball-left infinite 5s linear;
+    }
+    .orangeball:hover {
+        animation: rotate-ball-left infinite 1.5s linear;
     }
     .greenball {
         animation: rotate-ball-right infinite 5s linear;
     }
+    .greenball:hover {
+        animation: rotate-ball-right infinite 1.5s linear;
+    }
     .blueball {
         animation: rotate-ball-right infinite 5s linear;
+    }
+    .blueball:hover{
+        animation: rotate-ball-right infinite 1.5s linear;
     }
 }
 
