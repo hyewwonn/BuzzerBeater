@@ -60,7 +60,7 @@
 .ballsContainer {
   width: 100%;
   height: 60vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -70,7 +70,7 @@
 .ballBox{
   height: auto;
   position: absolute;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .ballImg{
@@ -133,23 +133,80 @@
   margin-right: 0;
 }
 
-@keyframes insertgoalAnimation {
+@keyframes moveBall {
   0% {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateY(200px);
+    /* Define the animation positions for each color */
+    transform:
+      translate(-1500px, 1200px); /* blue */
   }
   100% {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 }
 
-.active {
+@keyframes moveBallPink {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform:
+      translate(-450px, 1200px); /* pink */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes moveBallGreen {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform:
+      translate(580px, 1200px); /* green */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes moveBallOrange {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform:
+      translate(1500px, 1200px); /* orange */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.blueAnimation {
+  animation: moveBall 0.5s linear forwards;
+}
+
+.pinkAnimation {
+  animation: moveBallPink 0.5s linear forwards;
+}
+
+.greenAnimation {
+  animation: moveBallGreen 0.5s linear forwards;
+}
+
+.orangeAnimation {
+  animation: moveBallOrange 0.5s linear forwards;
+}
+
+/* .active {
   animation-name: insertgoalAnimation;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
-}
+} */
 
 @media screen and (max-width: 1000px) {  
   .blueBall, .pinkBall,
