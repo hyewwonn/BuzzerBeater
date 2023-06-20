@@ -13,6 +13,9 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
+// import firebase from '../../firebase';
+import { getFirestore, collection, query, where, getDocs, doc, getDoc, listCollections } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged, getUser } from 'firebase/auth';
 
   const Ball = ({ image, isActive }) => {
     const getColorAltText = (color) => {
@@ -54,7 +57,7 @@ import countDown from '../../public/audio/countDown.mp3';
     return { x: left, y: top };
   }
 
-  export default function GamePage() {
+  function GamePage() {
     const leftstyle = { float: 'left' };
     const rightstyle = { float: 'right' };
     const ballImages = [bb, pb, ob, gb];
@@ -74,6 +77,8 @@ import countDown from '../../public/audio/countDown.mp3';
     const [isGoalActive, setIsGoalActive] = useState(false);
     const goalRef = useRef(null);
     const [goalPosition, setGoalPosition] = useState({ x: 0, y: 0 });
+
+    const db = getFirestore(firebase);
 
     useEffect(() => {
       if (startCountdown > 0) {
@@ -342,3 +347,4 @@ import countDown from '../../public/audio/countDown.mp3';
       </div>
     );
   }
+  export default GamePage;
