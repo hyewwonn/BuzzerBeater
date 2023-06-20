@@ -208,6 +208,78 @@
   animation-timing-function: ease-in-out;
 } */
 
+@media screen and (max-width: 1920px) {  
+  @keyframes moveBall {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      /* Define the animation positions for each color */
+      transform:
+        translate(-600px, 450px); /* blue */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes moveBallPink {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform:
+        translate(-170px, 550px); /* pink */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes moveBallGreen {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform:
+        translate(180px, 550px); /* green */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  @keyframes moveBallOrange {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform:
+        translate(550px, 430px); /* orange */
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .blueAnimation {
+    animation: moveBall 0.5s linear forwards;
+  }
+  
+  .pinkAnimation {
+    animation: moveBallPink 0.5s linear forwards;
+  }
+  
+  .greenAnimation {
+    animation: moveBallGreen 0.5s linear forwards;
+  }
+  
+  .orangeAnimation {
+    animation: moveBallOrange 0.5s linear forwards;
+  }
+  
+}
+
 @media screen and (max-width: 1000px) {  
   .blueBall, .pinkBall,
   .greenBall, .orangeBall {
