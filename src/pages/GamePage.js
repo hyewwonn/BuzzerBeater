@@ -1,17 +1,18 @@
-  import React, { useState, useEffect, useRef } from 'react';
-  import styles from '../styles/GamePage.module.css';
-  import Image from 'next/image';
-  import Howler from 'react-howler';
-  import bb from '../../public/img/blueball.png';
-  import pb from '../../public/img/pinkball2.png';
-  import ob from '../../public/img/orangeball.png';
-  import gb from '../../public/img/greenball2.png';
-  import bgp from '../../public/img/bluegoalpost.png';
-  import pgp from '../../public/img/pinkgoalpost.png';
-  import ogp from '../../public/img/orangegoalpost.png';
-  import ggp from '../../public/img/greengoalpost.png';
-  import gameSound from '../../public/audio/gameSound.mp3';
-  import countDown from '../../public/audio/countDown.mp3';
+import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import styles from '../styles/GamePage.module.css';
+import Image from 'next/image';
+import Howler from 'react-howler';
+import bb from '../../public/img/blueball.png';
+import pb from '../../public/img/pinkball2.png';
+import ob from '../../public/img/orangeball.png';
+import gb from '../../public/img/greenball2.png';
+import bgp from '../../public/img/bluegoalpost.png';
+import pgp from '../../public/img/pinkgoalpost.png';
+import ogp from '../../public/img/orangegoalpost.png';
+import ggp from '../../public/img/greengoalpost.png';
+import gameSound from '../../public/audio/gameSound.mp3';
+import countDown from '../../public/audio/countDown.mp3';
 
   const Ball = ({ image, isActive }) => {
     const getColorAltText = (color) => {
@@ -57,6 +58,12 @@
     const leftstyle = { float: 'left' };
     const rightstyle = { float: 'right' };
     const ballImages = [bb, pb, ob, gb];
+
+    const [showModal, setShowModal] = useState(false);
+    const [name, setName] = useState('');
+    const modal = useRef(null);
+    const router = useRouter();
+
     const [ballsQueue, setBallsQueue] = useState([]);
     const [time, setTime] = useState(60);
     const [startCountdown, setStartCountdown] = useState(3);
@@ -98,7 +105,7 @@
           });
         }, 1000);
 
-        setTime(60);
+        setTime(6);
         setIsSoundPlaying(true);
       }
 
@@ -311,8 +318,26 @@
         {showStart && (
           <div className={styles.startCountdown}>{startCountdown}</div>
         )}
-        {!showStart && time === 60 && (
+        {!showStart && time === 6 && (
           <div className={styles.startText}>START</div>
+        )}
+
+        {showModal && (
+          <div className={styles.modal}>
+            <form ref={modal} onSubmit={handleSubmit} className={styles.modalform}>
+              <input
+                type="text"
+                placeholder="이름"
+                value={name}
+                onChange={handleNameChange}
+              />
+              <div className={styles.buttonContainer}>
+                <button type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         )}
       </div>
     );
