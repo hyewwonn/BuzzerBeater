@@ -109,7 +109,7 @@ import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
           });
         }, 1000);
 
-        setTime(6);
+        setTime(60);
         setIsSoundPlaying(true);
       }
 
@@ -334,7 +334,7 @@ import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
         {showStart && (
           <div className={styles.startCountdown}>{startCountdown}</div>
         )}
-        {!showStart && time === 6 && (
+        {!showStart && time === 60 && (
           <div className={styles.startText}>START</div>
         )}
 
