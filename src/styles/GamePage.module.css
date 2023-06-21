@@ -287,6 +287,11 @@
   outline: none;
 }
 
+.warning {
+  color: #888;
+  padding-left: 1rem;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: flex-end;

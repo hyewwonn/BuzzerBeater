@@ -355,6 +355,7 @@ function GamePage() {
               value={name}
               onChange={handleNameChange}
             />
+            <p className={styles.warning}>이름을 입력하지 않으시면, 저장이 되지 않습니다.</p>
             <div className={styles.buttonContainer}>
               <button type="submit">
                 Submit
