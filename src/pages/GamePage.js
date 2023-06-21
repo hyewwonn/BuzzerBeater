@@ -116,7 +116,7 @@ function GamePage() {
     if (!showStart && time > 0) {
       const interval = setInterval(() => {
         setTime(prevTime => {
-          const newTime = prevTime - 1;
+          const newTime = prevTime;
           if (newTime === 0) {
             setIsSoundPlaying(false);
             clearInterval(intervalRef.current);
