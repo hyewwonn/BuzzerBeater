@@ -183,44 +183,34 @@ function GamePage() {
   useEffect(() => {
     const currentBallColor = ballsQueue[0]; // 현재 나오고 있는 공의 색깔
     const handleKeyDown = (event) => {
-      if (event.key === 'ArrowUp') {
+      if (event.key === 'ArrowDown') {
         if (currentBallColor === gb) {
           setScore((prevScore) => prevScore + 2);
           console.log('연두색 골대에 골을 넣었습니다.');
           // 실제로 골을 넣는 동작을 구현하세요.
           setIsGoalActive(true);
-          // 일정 시간 후에 애니메이션 클래스를 제거
-          setTimeout(() => {
-            setIsGoalActive(false);
-            setBallsQueue((prevQueue) => {
-              // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
-              const updatedQueue = prevQueue.slice(1);
-              // 마지막에 새로운 랜덤 공 추가
-              const newBallColor = getRandomBallColor();
-              return [...updatedQueue, newBallColor];
-            });
-          }, 1000);
+          // 바로 공을 제거하고 다음 공을 추가
+          setBallsQueue((prevQueue) => {
+            const updatedQueue = prevQueue.slice(1); // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
+            const newBallColor = getRandomBallColor(); // 마지막에 새로운 랜덤 공 추가
+            return [...updatedQueue, newBallColor];
+          });
         } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
         }
-      } else if (event.key === 'ArrowDown') {
+      } else if (event.key === 'ArrowLeft') {
         if (currentBallColor === bb) {
           setScore((prevScore) => prevScore + 2);
           console.log('파란색 골대에 골을 넣었습니다.');
           // 실제로 골을 넣는 동작을 구현하세요.
           setIsGoalActive(true);
-          // 일정 시간 후에 애니메이션 클래스를 제거
-          setTimeout(() => {
-            setIsGoalActive(false);
-            setBallsQueue((prevQueue) => {
-              // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
-              const updatedQueue = prevQueue.slice(1);
-              // 마지막에 새로운 랜덤 공 추가
-              const newBallColor = getRandomBallColor();
-              return [...updatedQueue, newBallColor];
-            });
-          }, 1000);
+          // 바로 공을 제거하고 다음 공을 추가
+          setBallsQueue((prevQueue) => {
+            const updatedQueue = prevQueue.slice(1); // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
+            const newBallColor = getRandomBallColor(); // 마지막에 새로운 랜덤 공 추가
+            return [...updatedQueue, newBallColor];
+          });
         } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -231,38 +221,28 @@ function GamePage() {
           console.log('주황색 골대에 골을 넣었습니다.');
           // 실제로 골을 넣는 동작을 구현하세요.
           setIsGoalActive(true);
-          // 일정 시간 후에 애니메이션 클래스를 제거
-          setTimeout(() => {
-            setIsGoalActive(false);
-            setBallsQueue((prevQueue) => {
-              // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
-              const updatedQueue = prevQueue.slice(1);
-              // 마지막에 새로운 랜덤 공 추가
-              const newBallColor = getRandomBallColor();
-              return [...updatedQueue, newBallColor];
-            });
-          }, 1000);
+          // 바로 공을 제거하고 다음 공을 추가
+          setBallsQueue((prevQueue) => {
+            const updatedQueue = prevQueue.slice(1); // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
+            const newBallColor = getRandomBallColor(); // 마지막에 새로운 랜덤 공 추가
+            return [...updatedQueue, newBallColor];
+          });
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
         }
-      } else if (event.key === 'ArrowLeft') {
+      } else if (event.key === 'ArrowUp') {
         if (currentBallColor === pb) {
           setScore((prevScore) => prevScore + 2);
           console.log('분홍색 골대에 골을 넣었습니다.');
           // 실제로 골을 넣는 동작을 구현하세요.
           setIsGoalActive(true);
-          // 일정 시간 후에 애니메이션 클래스를 제거
-          setTimeout(() => {
-            setIsGoalActive(false);
-            setBallsQueue((prevQueue) => {
-              // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
-              const updatedQueue = prevQueue.slice(1);
-              // 마지막에 새로운 랜덤 공 추가
-              const newBallColor = getRandomBallColor();
-              return [...updatedQueue, newBallColor];
-            });
-          }, 1000);
+          // 바로 공을 제거하고 다음 공을 추가
+          setBallsQueue((prevQueue) => {
+            const updatedQueue = prevQueue.slice(1); // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
+            const newBallColor = getRandomBallColor(); // 마지막에 새로운 랜덤 공 추가
+            return [...updatedQueue, newBallColor];
+          });
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
@@ -275,14 +255,15 @@ function GamePage() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [ballsQueue]); 
+  }, [ballsQueue]);
   
-  useEffect(() => {
-    const goalElement = goalRef.current;
-    const { x, y } = getPosition(goalElement);
-    console.log('Goal position - x:', x, 'y:', y);
-    setGoalPosition({ x, y });
-  }, []);
+  
+  // useEffect(() => {
+  //   const goalElement = goalRef.current;
+  //   const { x, y } = getPosition(goalElement);
+  //   console.log('Goal position - x:', x, 'y:', y);
+  //   setGoalPosition({ x, y });
+  // }, []);
 
   // modal
   const handleNameChange = (e) => {

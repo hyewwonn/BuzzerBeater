@@ -175,7 +175,7 @@
   }
 } */
 
-@keyframes moveBallBlue {
+/* @keyframes moveBallBlue {
   from {
     transform: translate(0, 0);
   }
@@ -214,25 +214,25 @@
     transform:
       translate(1500px, 1200px);
   }
-}
+} */
 
 
 
-.blueAnimation {
-  animation: moveBallBlue 0.5s linear forwards;
+/* .blueAnimation {
+  animation: moveBallBlue 0.3s linear forwards;
 }
 
 .pinkAnimation {
-  animation: moveBallPink 0.5s linear forwards;
+  animation: moveBallPink 0.3s linear forwards;
 }
 
 .greenAnimation {
-  animation: moveBallGreen 0.5s linear forwards;
+  animation: moveBallGreen 0.3s linear forwards;
 }
 
 .orangeAnimation {
-  animation: moveBallOrange 0.5s linear forwards;
-}
+  animation: moveBallOrange 0.3s linear forwards;
+} */
 
 /* .active {
   animation-name: insertgoalAnimation;
