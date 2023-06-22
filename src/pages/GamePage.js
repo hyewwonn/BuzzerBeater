@@ -153,32 +153,43 @@ function GamePage() {
     }
   };
 
-  // handleGoalClick 함수에서 getColorAltText를 가져와 사용
-  const handleGoalClick = (goalColor) => {
-    const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
+  // let isGoalScored = false; // 골이 이미 득점되었는지 여부를 추적하는 플래그
+  // let isClickable = true; // 클릭 가능한 상태를 추적하는 플래그
   
-    if (currentBallColor === goalColor) {
-      // 색상이 일치하는 경우
-      setScore((prevScore) => prevScore + 2);
-      console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
-      // 실제로 골을 넣는 동작을 구현하세요.
-      setIsGoalActive(true);
-      // 일정 시간 후에 애니메이션 클래스를 제거
-      setTimeout(() => {
-        setIsGoalActive(false);
-        setBallsQueue((prevQueue) => {
-          // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
-          const updatedQueue = prevQueue.slice(1);
-          // 마지막에 새로운 랜덤 공 추가
-          const newBallColor = getRandomBallColor();
-          return [...updatedQueue, newBallColor];
-        });
-      }, 1000);
-    } else {
-      console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
-      // 다른 색상이면 튕겨나가는 애니메이션 등을 구현할 수 있습니다.
-    }
-  };
+  // // handleGoalClick 함수에서 getColorAltText를 가져와 사용
+  // const handleGoalClick = (goalColor) => {
+  //   const currentBallColor = getColorAltText(ballsQueue[0]); // 현재 나오고 있는 공의 색깔
+  
+  //   if (currentBallColor === goalColor && !isGoalScored) {
+  //     // 색상이 일치하고 골이 아직 득점되지 않았을 경우
+  //     setScore((prevScore) => prevScore + 2);
+  //     console.log(`[${currentBallColor}] 골대에 골을 넣었습니다.`);
+  //     // 실제로 골을 넣는 동작을 구현하세요.
+  //     setIsGoalActive(true);
+  //     // 득점되었음을 표시하기 위한 플래그를 설정합니다.
+  //     isGoalScored = true;
+
+  //     // 일정 시간 후에 애니메이션 클래스를 제거
+  //     setTimeout(() => {
+  //       setIsGoalActive(false);
+  //       setBallsQueue((prevQueue) => {
+  //         // 첫번째 공을 제외한 나머지 공들을 앞으로 당김
+  //         const updatedQueue = prevQueue.slice(1);
+  //         // 마지막에 새로운 랜덤 공 추가
+  //         const newBallColor = getRandomBallColor();
+  //         return [...updatedQueue, newBallColor];
+  //       });
+  //       // 애니메이션이 완료된 후에 플래그를 재설정합니다.
+  //       isGoalScored = false;
+  //     }, 500);
+  //   } else {
+  //     console.log("선택한 골대의 색깔과 공의 색깔이 다릅니다.");
+  //     isClickable = false;
+  //     setTimeout(() => {
+  //       isClickable = true;
+  //     }, 500);
+  //   }
+  // };
   
   useEffect(() => {
     const currentBallColor = ballsQueue[0]; // 현재 나오고 있는 공의 색깔
