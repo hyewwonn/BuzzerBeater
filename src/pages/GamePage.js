@@ -13,6 +13,7 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
+import endSound from '../../public/audio/endSound.mp3';
 import firebase from '../../firebase';
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
 
@@ -79,6 +80,21 @@ function GamePage() {
   const [goalPosition, setGoalPosition] = useState({ x: 0, y: 0 });
   const db = getFirestore(firebase);
   const [isGoalDisabled, setIsGoalDisabled] = useState(false); // 골 스코어링을 방지하는 플래그 변수
+
+   // 게임 종료 여부 상태
+   const [isGameEnded, setIsGameEnded] = useState(false);
+
+   // 타이머가 00초가 되면 게임 종료 처리
+   useEffect(() => {
+     if (time === 0) {
+       setIsGameEnded(true);
+       const endAudio = new Audio(endSound);
+       endAudio.play().catch(error => {
+         console.log('Error playing end audio:', error);
+       });
+       // 여기에 게임 종료 시 추가 작업을 수행할 수 있습니다.
+     }
+   }, [time]);
 
   useEffect(() => {
     if (startCountdown > 0) {
