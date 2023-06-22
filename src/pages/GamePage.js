@@ -78,6 +78,7 @@ function GamePage() {
   const goalRef = useRef(null);
   const [goalPosition, setGoalPosition] = useState({ x: 0, y: 0 });
   const db = getFirestore(firebase);
+  const [isGoalDisabled, setIsGoalDisabled] = useState(false); // 골 스코어링을 방지하는 플래그 변수
 
   useEffect(() => {
     if (startCountdown > 0) {
@@ -193,6 +194,12 @@ function GamePage() {
   
   useEffect(() => {
     const currentBallColor = ballsQueue[0]; // 현재 나오고 있는 공의 색깔
+
+    if (isGoalDisabled) {
+      // 골 스코어링이 방지되면 아무 작업도 하지 않음
+      return;
+    }
+
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowDown') {
         if (currentBallColor === gb) {
@@ -209,6 +216,13 @@ function GamePage() {
         } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
+
+          // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
+          setIsGoalDisabled(true);
+          setTimeout(() => {
+            setIsGoalDisabled(false);
+            console.log('0.5초 동안 동작을 막습니다.');
+          }, 500);
         }
       } else if (event.key === 'ArrowLeft') {
         if (currentBallColor === bb) {
@@ -225,6 +239,13 @@ function GamePage() {
         } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
+
+          // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
+          setIsGoalDisabled(true);
+          setTimeout(() => {
+            setIsGoalDisabled(false);
+            console.log('0.5초 동안 동작을 막습니다.');
+          }, 500);
         }
       } else if (event.key === 'ArrowRight') {
         if (currentBallColor === ob) {
@@ -241,6 +262,13 @@ function GamePage() {
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
+
+          // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
+          setIsGoalDisabled(true);
+          setTimeout(() => {
+            setIsGoalDisabled(false);
+            console.log('0.5초 동안 동작을 막습니다.');
+          }, 500);
         }
       } else if (event.key === 'ArrowUp') {
         if (currentBallColor === pb) {
@@ -257,6 +285,13 @@ function GamePage() {
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
+
+          // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
+          setIsGoalDisabled(true);
+          setTimeout(() => {
+            setIsGoalDisabled(false);
+            console.log('0.5초 동안 동작을 막습니다.');
+          }, 500);
         }
       }
     };
