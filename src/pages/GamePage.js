@@ -13,9 +13,11 @@ import ogp from '../../public/img/orangegoalpost.png';
 import ggp from '../../public/img/greengoalpost.png';
 import gameSound from '../../public/audio/gameSound.mp3';
 import countDown from '../../public/audio/countDown.mp3';
+import btnSound from '../../public/audio/btnClickSound.mp3';
 import endSound from '../../public/audio/endSound.mp3';
 import firebase from '../../firebase';
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
+import home from '../../public/img/home.svg';
 
 const getRandomBallColor = () => {
   const colors = [gb, bb, ob, pb];
@@ -83,6 +85,22 @@ function GamePage() {
 
    // 게임 종료 여부 상태
    const [isGameEnded, setIsGameEnded] = useState(false);
+
+   const audioRef = useRef(null);
+   const btnAudioRef = useRef(null);
+ 
+   useEffect(() => {
+     btnAudioRef.current.play();
+   }, []);
+
+   
+   const handleClick = () => {
+    btnAudioRef.current.play();
+    const confirmResult = window.confirm("게임을 포기하시겠습니까?");
+    if (confirmResult) {
+      router.push('/MainPage');
+    }
+   };
 
    // 타이머가 00초가 되면 게임 종료 처리
    useEffect(() => {
@@ -396,6 +414,13 @@ function GamePage() {
           <Image className={styles.orangeGoalpost} ref={goalRef} src={ogp} alt="orange-goalpost" />
         </div>
       </div>
+      <div className={styles.mainpgbtn}>
+      <audio ref={btnAudioRef} src={btnSound}/>
+      <button className={styles['mainpg-btn']} onClick={handleClick} > 
+        <Image className={styles['mainpg-icon']} src={home} alt="home" />
+      </button>
+      </div>
+
       {showStart && (
         <div className={styles.startCountdown}>{startCountdown}</div>
       )}
