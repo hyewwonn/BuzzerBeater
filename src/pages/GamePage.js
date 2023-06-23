@@ -225,9 +225,8 @@ function GamePage() {
             return [...updatedQueue, newBallColor];
           });
         } else if (currentBallColor === bb || currentBallColor === ob || currentBallColor === pb) {
-          setScore((prevScore) => prevScore + 0);
-          console.log('잘못된 색깔의 골대를 골랐습니다.');
           setScore((prevScore) => prevScore - 3);
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
           // setIsGoalDisabled(true);
@@ -249,9 +248,8 @@ function GamePage() {
             return [...updatedQueue, newBallColor];
           });
         } else if (currentBallColor === gb || currentBallColor === ob || currentBallColor === pb) {
-          setScore((prevScore) => prevScore + 0);
-          console.log('잘못된 색깔의 골대를 골랐습니다.');
           setScore((prevScore) => prevScore - 3);
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
           // setIsGoalDisabled(true);
@@ -273,9 +271,8 @@ function GamePage() {
             return [...updatedQueue, newBallColor];
           });
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === pb) {
-          setScore((prevScore) => prevScore + 0);
-          console.log('잘못된 색깔의 골대를 골랐습니다.');
           setScore((prevScore) => prevScore - 3);
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
           // setIsGoalDisabled(true);
@@ -297,9 +294,8 @@ function GamePage() {
             return [...updatedQueue, newBallColor];
           });
         } else if (currentBallColor === gb || currentBallColor === bb || currentBallColor === ob) {
-          setScore((prevScore) => prevScore + 0);
-          console.log('잘못된 색깔의 골대를 골랐습니다.');
           setScore((prevScore) => prevScore - 3);
+          console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
           // setIsGoalDisabled(true);
