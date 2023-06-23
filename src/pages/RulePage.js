@@ -73,7 +73,7 @@ function Rule() {
               경기 규칙 2.
             </div>
             <div className={isMobile ? mobileStyles.rulecon2 : styles.rulecon2}>
-              농구공을 맞게 던지면 점수가 올라가고 Combo 획득!
+              잘못된 골대를 선택시, 점수가 3점씩 깎입니다.
             </div>
           </div>
           <div className={isMobile ? mobileStyles.tips : styles.tips}>
