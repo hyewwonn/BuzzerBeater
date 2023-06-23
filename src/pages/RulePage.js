@@ -81,9 +81,9 @@ function Rule() {
             <div className={isMobile ? mobileStyles.tip1 : styles.tip1}>
               모여있는 농구공을 잘 보면서 색깔 예측하기!
             </div>
-            <div className={isMobile ? mobileStyles.tip2 : styles.tip2}>
+            {/* <div className={isMobile ? mobileStyles.tip2 : styles.tip2}>
               Combo를 많이 쌓을수록 등수가 올라요!
-            </div>
+            </div> */}
           </div>
           <div className={isMobile ? mobileStyles.ment : styles.ment}>
             마지막까지 최선을 다해서 버저비터를 노려보세요!
