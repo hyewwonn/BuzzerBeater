@@ -217,12 +217,12 @@ function GamePage() {
           setScore((prevScore) => prevScore + 0);
           console.log('잘못된 색깔의 골대를 골랐습니다.');
 
-          // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
-          setIsGoalDisabled(true);
-          setTimeout(() => {
-            setIsGoalDisabled(false);
-            console.log('0.5초 동안 동작을 막습니다.');
-          }, 500);
+          // // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
+          // setIsGoalDisabled(true);
+          // setTimeout(() => {
+          //   setIsGoalDisabled(false);
+          //   console.log('0.5초 동안 동작을 막습니다.');
+          // }, 500);
         }
       } else if (event.key === 'ArrowLeft') {
         if (currentBallColor === bb) {
@@ -241,11 +241,11 @@ function GamePage() {
           console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
-          setIsGoalDisabled(true);
-          setTimeout(() => {
-            setIsGoalDisabled(false);
-            console.log('0.5초 동안 동작을 막습니다.');
-          }, 500);
+          // setIsGoalDisabled(true);
+          // setTimeout(() => {
+          //   setIsGoalDisabled(false);
+          //   console.log('0.5초 동안 동작을 막습니다.');
+          // }, 500);
         }
       } else if (event.key === 'ArrowRight') {
         if (currentBallColor === ob) {
@@ -264,11 +264,11 @@ function GamePage() {
           console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
-          setIsGoalDisabled(true);
-          setTimeout(() => {
-            setIsGoalDisabled(false);
-            console.log('0.5초 동안 동작을 막습니다.');
-          }, 500);
+          // setIsGoalDisabled(true);
+          // setTimeout(() => {
+          //   setIsGoalDisabled(false);
+          //   console.log('0.5초 동안 동작을 막습니다.');
+          // }, 500);
         }
       } else if (event.key === 'ArrowUp') {
         if (currentBallColor === pb) {
@@ -287,11 +287,11 @@ function GamePage() {
           console.log('잘못된 색깔의 골대를 골랐습니다.');
 
           // 스코어링 방지 상태로 설정하고 0.5초 후에 원래 상태로 복원
-          setIsGoalDisabled(true);
-          setTimeout(() => {
-            setIsGoalDisabled(false);
-            console.log('0.5초 동안 동작을 막습니다.');
-          }, 500);
+          // setIsGoalDisabled(true);
+          // setTimeout(() => {
+          //   setIsGoalDisabled(false);
+          //   console.log('0.5초 동안 동작을 막습니다.');
+          // }, 500);
         }
       }
     };
