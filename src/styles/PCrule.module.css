@@ -24,10 +24,14 @@
     display: flex;
     justify-content: center;
 }
+.ballContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .ball{
     width: 40px;
     height: 40px;
-    margin-top: 20px;
     margin-right: 20px;
     margin-left: 20px;
 }

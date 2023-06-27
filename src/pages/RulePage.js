@@ -39,7 +39,7 @@ function Rule() {
     <div className={isMobile ? mobileStyles.box : styles.box}>
       <div className={isMobile ? mobileStyles['content-box'] : styles['content-box']}>
         <div className={isMobile ? mobileStyles.title : styles.title}>
-          <div style={ballStyle}>
+          <div className={styles.ballContainer} style={ballStyle}>
             {isMobile ? (
               <Image className={mobileStyles.ball} src={ob} alt="orangeball" />
             ) : (
@@ -49,7 +49,7 @@ function Rule() {
           <div style={ballStyle}>
             <p>Rule</p>
           </div>
-          <div>
+          <div className={styles.ballContainer}>
             {isMobile ? (
               <Image className={mobileStyles.ball} src={ob} alt="orangeball" />
             ) : (
