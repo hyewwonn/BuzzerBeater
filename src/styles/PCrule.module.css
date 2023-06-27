@@ -32,7 +32,7 @@
     margin-left: 20px;
 }
 .title div p{
-    font-size: 60px;
+    /* font-size: 60px; */
     font-weight: bold;
     margin-top: 5%;
     color: white;
@@ -43,14 +43,14 @@
 }
 .main .ruletit1{
     color: white;
-    font-size: 35px;
+    /* font-size: 35px; */
     font-weight: bold;
     margin-top: 1%;
     margin-left: 3.5%;
 }
 .main .rulecon1{
     color: white;
-    font-size: 23px;
+    /* font-size: 23px; */
     font-weight: bold;
     margin-top: 2%;
     margin-left: 4%;
@@ -60,14 +60,14 @@
 }
 .main .ruletit2{
     color: white;
-    font-size: 35px;
+    /* font-size: 35px; */
     font-weight: bold;
     margin-top: 3%;
     margin-left: 3.5%;
 }
 .main .rulecon2{
     color: white;
-    font-size: 23px;
+    /* font-size: 23px; */
     font-weight: bold;
     margin-top: 2%;
     margin-left: 4%;
@@ -77,26 +77,26 @@
     margin-top: 4%;
 }
 .main .tip{
-    font-size: 30px;
+    /* font-size: 30px; */
     font-weight: bold;
     margin-top: 20px;
     margin-left: 3.5%;
 }
 .main .tip1{
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: bold;
     margin-top: 20px;
     margin-left: 3.5%;
 }
 .main .tip2{
-    font-size: 20px;
+    /* font-size: 20px; */
     font-weight: bold;
     margin-top: 10px;
     margin-left: 3.5%;
 }
 .main .ment{
     color: white;
-    font-size: 30px;
+    /* font-size: 30px; */
     font-weight: bold;
     margin-top: 40px;
 }
@@ -131,6 +131,25 @@
     z-index: 1000;
 }
 
+/* 폰트사이즈 */
+.title div p{
+    font-size: 3vw;
+    margin:0;
+}
+.ruletit1, .ruletit2 {
+    font-size: 1.5vw;
+}
+.rulecon1, .rulecon2{
+    font-size: 1.25vw;
+}
+.tip, .ment {
+    font-size: 1.4vw;
+}
+.tip1, .tip2 {
+    font-size: 1.1vw;
+}
+
+
 @media screen and (min-width: 5120px) and (min-height: 2880px) {
     .box{
         width: 100%;
@@ -150,6 +169,7 @@
     .title{
         display: flex;
         justify-content: center;
+        align-items: center;
     }
     .ball{
         width: 3vw;
